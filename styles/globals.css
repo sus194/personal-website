@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.underlay {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  
+}
+
+
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.menu {
+  position: fixed;
+  font-size: 30px;
+  top: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  color: #ffffff;
+  background-color: red;
+  border-radius: 50%; /* Make it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.menu:hover{
+  color: black;
+  background-color: white;
+}
+
+
+.menu.visible {
+  opacity: 1;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu.visible.close{
+  color: black;
+  background-color: white;
+}
+
+
+.sidebar{
+  position: fixed;
+  font-size: 30px;
+  top: 30px;
+  right: 30px;
+  background-color: red;
+  width: 30vb;
+  height: 100vh;
+  animation: sidebarSlideIn 0.3s forwards;
+}
+
+@keyframes sidebarSlideIn {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.sidebar.slide-out {
+  animation: sidebarSlideOut 0.3s forwards;
+}
+
+@keyframes sidebarSlideOut {
+  from {
+    right: 0;
+  }
+  to {
+    right: -300px;
+  }
+}

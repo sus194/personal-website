@@ -1,113 +1,109 @@
-import Image from 'next/image'
+"use client"
+import Intro from "@/components/Intro"
+import GetInTouch from "@components/GetInTouch"
+import Projects from "@components/Projects"
+import Skills from "@components/Skills"
+import Start from "@components/Start"
+import "@styles/globals.css"
+import { useEffect, useRef, useState } from "react"
+import Link from 'next/link';
+import {FiMenu } from "react-icons/fi";
+import {IoClose } from "react-icons/io5";
+import { IconContext } from "react-icons";
+import { text } from "node:stream/consumers"
 
-export default function Home() {
+export default function page() {
+  const page1Ref = useRef<HTMLDivElement>(null);
+  const page2Ref = useRef<HTMLDivElement>(null);
+  const page3Ref = useRef<HTMLDivElement>(null);
+  const page4Ref = useRef<HTMLDivElement>(null);
+  const page5Ref = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState("section1");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpenf, setIsSidebarOpenf] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpenf(true)
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollContainer = scrollContainerRef.current;
+      const scrollOffset = scrollContainer?.scrollTop;
+      const section2Offset = page2Ref.current?.offsetTop;
+      const section3Offset = page3Ref.current?.offsetTop;
+      const section4Offset = page4Ref.current?.offsetTop;
+      const section5Offset = page5Ref.current?.offsetTop;
+
+      if (section5Offset&&scrollOffset&&scrollOffset >= section5Offset && activeSection !== "section5") {
+        setActiveSection("section5");
+      } else if (section4Offset&&scrollOffset&&scrollOffset >= section4Offset && activeSection !== "section4") {
+        setActiveSection("section4");
+      } else if (section3Offset&&scrollOffset&&scrollOffset >= section3Offset && activeSection !== "section3") {
+        setActiveSection("section3");
+      } else if (section2Offset&&scrollOffset&&scrollOffset >= section2Offset && activeSection !== "section2") {
+        setActiveSection("section2");
+      } else if (section2Offset&&scrollOffset&&scrollOffset < section2Offset && activeSection !== "section1") {
+        setActiveSection("section1");
+        setIsSidebarOpenf(false)
+        setIsSidebarOpen(false)
+      }
+    };
+
+    const scrollContainer = scrollContainerRef.current;
+    scrollContainer?.addEventListener("scroll", handleScroll);
+
+    return () => {
+      scrollContainer?.removeEventListener("scroll", handleScroll);
+    };
+  }, [activeSection]);
+
+
+
+
+const scrollToSection = (sectionId: string) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <div className={`nav ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
+        <div className="right-nav">
+          <span  className={`menu ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'visible' : ''}`} onClick={toggleSidebar}>
+          {isSidebarOpen ? <IoClose /> : <FiMenu />}
+          
+          </span>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="underlay" ref={scrollContainerRef}>
+        <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref}/></section>
+        
+        <section id="section2"  ref={page2Ref} ><Intro /></section>
+        <section id="section3" ref={page3Ref} ><Skills/></section>
+        <section id="section4"  ref={page4Ref} ><Projects/></section>
+        <section id="section5" ref={page5Ref}><GetInTouch/></section>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
+      <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
+        <ul>
+          <li><a href="#section1">Home</a></li>
+          <li><a href="#section2">About</a></li>
+          <li><a href="#section3">Skills</a></li>
+          <li><a href="#section4">Projects</a></li>
+          <li><a href="#section5">Get in Touch</a></li>
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
       </div>
-    </main>
+    )}
+      
+    </div>
   )
 }

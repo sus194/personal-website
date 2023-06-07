@@ -1,0 +1,25 @@
+/* intro.css */
+
+.intro {
+    background-image: linear-gradient(to bottom, #000000, #333333), radial-gradient(circle, #ff0000, #ff6600);
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  .intro-content {
+    animation: slide-in 0.5s ease forwards;
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
