@@ -92,7 +92,7 @@ const scrollToSection = (sectionId: string) => {
 
       {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
       <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
-        <ul>
+        <ul className="bar">
           <li><a href="#section1">Home</a></li>
           <li><a href="#section2">About</a></li>
           <li><a href="#section3">Skills</a></li>
