@@ -22,11 +22,11 @@ export default function Intro() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    window.addEventListener('wheel', handleScroll);
+    
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleScroll);
     };
   }, []);
 

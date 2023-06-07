@@ -61,15 +61,12 @@ export default function page() {
 
 
 
-const scrollToSection = (sectionId: string) => {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
+  const AboutClick = () => page2Ref.current?.scrollIntoView({ behavior: 'smooth' });
+  const SkillsClick = () => page3Ref.current?.scrollIntoView({ behavior: 'smooth' });
+  const ProjectClick = () => page4Ref.current?.scrollIntoView({ behavior: 'smooth' });
+  const GetInTouchClick = () => page5Ref.current?.scrollIntoView({ behavior: 'smooth' });
 
-
+  const HomeClick = () => page1Ref.current?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <div>
@@ -92,15 +89,33 @@ const scrollToSection = (sectionId: string) => {
 
       {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
       <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
+        <span className="navigation-title">Navigation</span>
         <ul className="bar">
-          <li><a href="#section1">Home</a></li>
-          <li><a href="#section2">About</a></li>
-          <li><a href="#section3">Skills</a></li>
-          <li><a href="#section4">Projects</a></li>
-          <li><a href="#section5">Get in Touch</a></li>
-          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          
+          <li>
+          <Link onClick={HomeClick}  href={""}></Link>
+            <a href="#section1">Home</a>
+            </li>
+          <li>
+            <Link onClick={AboutClick}  href={""}></Link>
+            <a href="#section2">About</a>
+            </li>
+          <li>
+          <Link onClick={SkillsClick}  href={""}></Link>
+            <a href="#section3">Skills</a>
+            </li>
+          <li>
+          <Link onClick={ProjectClick}  href={""}></Link>
+            <a href="#section4">Projects</a></li>
+          <li>
+          <Link onClick={GetInTouchClick}  href={""}></Link>
+            <a href="#section5">Get in Touch</a></li>
+          
         </ul>
+        <div className="bottom-links">
+          <Link className="bottom-link" href="https://github.com/sus194">GitHub</Link>
+          <Link className="bottom-link" href="https://linkedin.com">LinkedIn</Link>
+        </div>
       </div>
     )}
       
