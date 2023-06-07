@@ -1,25 +1,31 @@
-/* intro.css */
+.intro-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 
-.intro {
-    background-image: linear-gradient(to bottom, #000000, #333333), radial-gradient(circle, #ff0000, #ff6600);
-    background-blend-mode: multiply;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-  }
+.intro-title {
+  font-size: 32px;
+  margin-top: 20px;
+}
+
+.intro-content {
+  display: flex;
+  align-items: flex-start;
   
-  .intro-content {
-    animation: slide-in 0.5s ease forwards;
-  }
-  
-  @keyframes slide-in {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
+  margin-top: 20px;
+}
+
+.intro-image {
+  float: left;
+}
+
+.intro-description {
+  margin-left: 20px;
+}
+
+.intro-description h3 {
+  font-size: 18px;
+}

@@ -93,23 +93,23 @@ export default function page() {
         <ul className="bar">
           
           <li>
-          <Link onClick={HomeClick}  href={""}></Link>
-            <a href="#section1">Home</a>
+          <Link onClick={HomeClick}  href={""}>Home</Link>
+            
             </li>
           <li>
-            <Link onClick={AboutClick}  href={""}></Link>
-            <a href="#section2">About</a>
+            <Link onClick={AboutClick}  href={""}>About</Link>
+            
             </li>
           <li>
-          <Link onClick={SkillsClick}  href={""}></Link>
-            <a href="#section3">Skills</a>
+          <Link onClick={SkillsClick}  href={""}>Skills</Link>
+            
             </li>
           <li>
-          <Link onClick={ProjectClick}  href={""}></Link>
-            <a href="#section4">Projects</a></li>
+          <Link onClick={ProjectClick}  href={""}>Projects</Link>
+            </li>
           <li>
-          <Link onClick={GetInTouchClick}  href={""}></Link>
-            <a href="#section5">Get in Touch</a></li>
+          <Link onClick={GetInTouchClick}  href={""}>Get in Touch</Link>
+            </li>
           
         </ul>
         <div className="bottom-links">
