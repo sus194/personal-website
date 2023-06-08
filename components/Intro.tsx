@@ -35,23 +35,28 @@ export default function Intro() {
     };
   }, []);
 
+  
+
   return (
+    
     <div
       ref={introRef}
       className={`intro-container ${fadeIn ? 'fade-in' : ''}`}
     >
-      <h1 className="intro-title">About</h1>
-      <div
+    
+
+        <h1 className="intro-title">About</h1>
+        <div
           className={`intro-image ${slideIn ? 'slide-in' : ''}`}
         >
-        <Image src="/imgs/photo-2.png" alt="My Image" width={300} height={300} />
-        
-      </div>
-      <div className="intro-description">
+          <Image src="/imgs/photo-2.png" alt="My Image" width={300} height={300} />
+
+        </div>
+        <div className="intro-description">
           <h3>Description</h3>
+        </div>
+
+
       </div>
-     
-      
-    </div>
   );
 }
