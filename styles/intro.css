@@ -4,28 +4,38 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .intro-title {
-  font-size: 32px;
-  margin-top: 20px;
-}
-
-.intro-content {
-  display: flex;
-  align-items: flex-start;
-  
-  margin-top: 20px;
+  font-size: 50px;
+  margin-top: 60px;
+  margin-bottom: 50px;
 }
 
 .intro-image {
-  float: left;
+  margin-top: 80px;
+  margin-left: -300px; /* Initial position */
+  opacity: 0;
+  transition: opacity 1s, margin-left 1s;
+}
+
+.intro-image.slide-in {
+  opacity: 1;
+  margin-left: 190px;
 }
 
 .intro-description {
-  margin-left: 20px;
+  margin-top: -320px;
+  margin-left: 0px;
 }
 
 .intro-description h3 {
-  font-size: 18px;
+  font-size: 28px;
+}
+
+.fade-in {
+
+  opacity: 1;
 }
