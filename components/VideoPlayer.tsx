@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+
 import '@styles/video.css';
 
 const VideoPlayer = (props: any) => {
@@ -37,6 +38,7 @@ const VideoPlayer = (props: any) => {
               </video>
     {show?(
     <div className={`contet-overlay ${show ? 'fade-in' : ''}`}>
+        
         <h1>Click To Continue</h1>
     </div>):(null)
     }   

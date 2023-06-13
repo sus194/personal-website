@@ -37,9 +37,7 @@ function Start(props: any) {
         
         
       </div>
-        <video autoPlay muted loop className={`fullscreen-video ${fadeIn ? 'fade-in' : ''}`}>
-        <source src="/video/luffy-fire-punch.mp4" type="video/mp4" />
-        </video>
+        
 
         <div className={`content-overlay ${fadeIn ? 'fade-in' : ''}`}>
           <h1 className='sd'>Software Developer</h1>

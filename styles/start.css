@@ -2,23 +2,19 @@
     position:relative;
       top: 0;
       left: 0;
-      
+      width: 100vw;
       height: 100%;
   }
   
-  .fullscreen-video {
-    
-    height: 100%;
-    object-fit: cover;
-    
-  }
+  
   .content-overlay {
+    
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: black;
+    color: white;
     z-index: 1;
   }
   
@@ -43,7 +39,7 @@
   .navbar button {
     background-color: transparent;
     display: flex;
-    color: black;
+    color: white;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
