@@ -1,0 +1,40 @@
+
+  
+  .video {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contet-overlay{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+    z-index: 1;
+  }
+
+  .contet-overlay h1{
+    font-style:normal;
+    font-weight: 700;
+    font-size: large;
+    color: aliceblue;
+    background-color: black;
+  }
+
+  .contet-overlay.fade-in {
+    animation: fade-in-animation 2s ease forwards;
+  }
+  
+  @keyframes fade-in-animation {
+    0% {
+      opacity: 0;
+      
+    }
+    100% {
+      opacity: 1;
+      
+    }
+  }
+  

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '@styles/start.css';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 function Start(props: any) {
+  
   const [fadeIn, setFadeIn] = useState(true);
 
   const AboutClick = () => props.ref1.current?.scrollIntoView({ behavior: 'smooth' });
@@ -37,7 +38,7 @@ function Start(props: any) {
         
       </div>
         <video autoPlay muted loop className={`fullscreen-video ${fadeIn ? 'fade-in' : ''}`}>
-          <source src="/video/luffy-fire-punch.mp4" type="video/mp4" />
+        <source src="/video/luffy-fire-punch.mp4" type="video/mp4" />
         </video>
 
         <div className={`content-overlay ${fadeIn ? 'fade-in' : ''}`}>
