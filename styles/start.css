@@ -1,154 +1,209 @@
-  .video-container {
-    position:relative;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100%;
-  }
-  
-  
-  .content-overlay {
-    
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 1;
-  }
-  
-  .content-overlay h1 {
-    margin-bottom: 1rem;
-  }
-  
-  .content-overlay p {
-    font-size: 1.5rem;
-  }
+.video-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+}
 
-  .navbar {
-    position: relative;
-    top: calc(50% + 30px); /* Adjust the vertical position as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-  }
-  
-  .navbar button {
-    background-color: transparent;
-    display: flex;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 16px;
-    transition: background-color 0.3s ease;
-    margin-right: 20px; /* Add space between buttons */
-  }
-  
-  .navbar button:last-child {
-    margin-right: 0; /* Remove margin for the last button */
-  }
-  
+.content-overlay {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 100vw;
+}
 
-  .navbar button:hover {
-    border: 1px solid white;
-    background-color: #fff;
-    color: #000;
-  }
+.content-overlay h1 {
+  margin-bottom: 1rem;
+}
 
-  .sd{
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    margin-top: -130px; 
-  }
+.content-overlay p {
+  font-size: 1.5rem;
+}
 
-  .tp{
-    font-size: 2rem;
-    margin-bottom: 40px;
-    margin-top: 40px; 
-  }
+.navbar {
+  position: relative;
+  top: calc(50% + 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
 
-  .video-container.fade-in,
-  .fullscreen-video.fade-in,
-  .content-overlay.fade-in {
-    animation: fade-in-animation 2s ease forwards;
-  }
-  
-  @keyframes fade-in-animation {
-    0% {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.navbar button {
+  background-color: transparent;
+  display: flex;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+  margin-right: 20px;
+}
 
-  .nav {
-    position:absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-  }
-  
-  
-  
-  .right-nav {
-    
-    float: right;
-    font-size: 60px;
-    margin: 10px 10px;
-  }
-  
-  .left-nav {
-    display: flex;
-    float: left;
-    justify-content: center;
-    margin: 20px 20px;
-  }
-  
-  .left-icon{
-    color: black;
-    background-color: white;
-    margin: 0px 10px;
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
-    font-size: 60px;
-    padding: 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .nav .left-nav a:hover .left-icon{
-    transform: scale(1.2);
-    
-  }
-  .left-icon :hover{
-    color: red;
-  }
-  
-  
-  
-  
-  .nav.fade-in {
-    animation: fade-in-animation 1s ease forwards;
-  }
-  
-  @keyframes fade-in-animation {
-    0% {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.navbar button:last-child {
+  margin-right: 0;
+}
 
+.navbar button:hover {
+  border: 1px solid white;
+  background-color: #fff;
+  color: #000;
+}
+
+.sd {
+  font-size: 3rem;
+  margin-top: -130px;
+}
+
+.tp {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.video-container.fade-in,
+.fullscreen-video.fade-in,
+.content-overlay.fade-in {
+  animation: fade-in-animation 2s ease forwards;
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.right-nav {
+  float: right;
+  font-size: 60px;
+  margin: 10px 10px;
+}
+
+.left-nav {
+  display: flex;
+  float: left;
+  justify-content: center;
+  margin: 20px 20px;
+}
+
+.left-icon {
+  color: black;
+  background-color: white;
+  margin: 0px 10px;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  font-size: 60px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.nav .left-nav a:hover .left-icon {
+  transform: scale(1.2);
+}
+
+.left-icon:hover {
+  color: red;
+}
+
+.nav.fade-in {
+  animation: fade-in-animation 1s ease forwards;
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.symbol {
+  padding: 300px 100px;
+
+  background-image: url('/imgs/batman-symbol.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+}
+
+.mini-bats {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  animation: fly 5s linear infinite;
+}
+
+.mini-bat {
+  background-image: url('/imgs/mini-bat.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  animation: bat-fly 5s linear infinite;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(-170px);
+  }
+  100% {
+    transform: translateY(-170px);
+  }
+}
+
+@keyframes bat-fly {
+  0% {
+    transform: rotate(0deg) translateX(215px);
+  }
+  100% {
+    transform: rotate(360deg) translateX(215px);
+  }
+}
+
+.line {
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background-color: white;
+  animation: fade-line 7s ease-out;
+}
+
+@keyframes fade-line {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
