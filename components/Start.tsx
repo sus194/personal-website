@@ -1,69 +1,114 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '@styles/start.css';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-interface Line {
-  x: number;
-  y: number;
+interface MiniBat {
   id: number;
+  rotation: number;
+  posX: number;
+  posY: number;
 }
 function Start(props: any) {
   const [fadeIn, setFadeIn] = useState(true);
-  
-  const [miniBats, setMiniBats] = useState<{ id: number; rotation: number; posX: number; posY: number; }[]>([]);
+  const [popupVisible, setPopupVisible] = useState(true);
+  const [miniBats, setMiniBats] = useState<MiniBat[]>([]);
+  const [batCounter, setBatCounter] = useState(0);
+  const [removalInProgress, setRemovalInProgress] = useState(false);
+  const [popupPosition, setPopupPosition] = useState({left:0, top: 0});
+  const videoContainerRef = useRef(null);
 
+  
   const AboutClick = () => props.ref1.current?.scrollIntoView({ behavior: 'smooth' });
   const SkillsClick = () => props.ref2.current?.scrollIntoView({ behavior: 'smooth' });
   const ProjectClick = () => props.ref3.current?.scrollIntoView({ behavior: 'smooth' });
   const GetInTouchClick = () => props.ref4.current?.scrollIntoView({ behavior: 'smooth' });
 
-  const [lines, setLines] = useState<Line[]>([]);
-
-  const handleMouseMove = (event: { clientX: any; clientY: any; }) => {
-    const { clientX, clientY } = event;
-    const rotation = Math.random() * 360;
-    const line = {
-      x: clientX,
-      y: clientY,
-      id: Date.now(),
-      rotation: rotation,
-    };
-    setLines((prevLines) => [...prevLines, line]);
-    setTimeout(() => {
-      setLines((prevLines) => prevLines.filter((l) => l.id !== line.id));
-    }, 7000);
-  };
-
- 
   
-  const releaseBats = () => {
-    const newMiniBat = {
-      id: Date.now(),
-      rotation: Math.random() * 360,
-      posX: 0,
-      posY: 0,
-    };
-
-    setMiniBats((prevMiniBats) => [...prevMiniBats, newMiniBat]);
+  const handleMouseMove = (event: { clientX: number; clientY: number; }) => {
+    const container:any = videoContainerRef.current;
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+      setPopupPosition({ left: mouseX+10, top: mouseY +20});
+    }
   };
+  
+    
+  
+  const handlePopupClick = () => {
+    setPopupVisible(false);
+  };
+
+  const releaseBats = () => {
+    if (miniBats.length > 0) {
+      // Start the removal process
+      setRemovalInProgress(true);
+    } else {
+      // Release new mini bats with a 1-second delay between each release
+      setBatCounter(10);
+    }
+  };
+  
+  useEffect(() => {
+    const deleteOriginBats = () => {
+      const originBatIndex = miniBats.findIndex((miniBat) => miniBat.posX === 0 && miniBat.posY === 0);
+      if (originBatIndex !== -1&&removalInProgress) {
+        
+          setMiniBats((prevMiniBats) => prevMiniBats.filter((_, index) => index !== originBatIndex));
+       
+      } else {
+        setRemovalInProgress(false); // All origin bats have been deleted
+      }
+    };
+  
+    if (removalInProgress) {
+      deleteOriginBats(); // Start the removal process
+    }
+  }, [miniBats, removalInProgress]);
+  
+  
+  
+
+  useEffect(() => {
+    if (batCounter > 0) {
+      const timer = setTimeout(() => {
+        const newMiniBat = {
+          id: Date.now(),
+          rotation: Math.random() * 360,
+          posX: 0,
+          posY: 0,
+        };
+        setMiniBats((prevMiniBats) => [...prevMiniBats, newMiniBat]);
+        setBatCounter((prevCounter) => prevCounter - 1);
+      }, 500); // Delay each bat release by 1 second
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [batCounter]);
+
+
 
   
 
   return (
     <>
-      <div className={`video-container ${fadeIn ? 'fade-in' : ''}`} onMouseMove={handleMouseMove}>
-      {lines.map((line: {
-        [x: string]: any; id: React.Key | null | undefined; x: any; y: any; 
-}) => (
-        <div
-          key={line.id}
-          className="line"
-          style={{ left: line.x, top: line.y,transform: `rotate(${line.rotation}deg)` }}
-        ></div>
-      ))}
+      <div className={`video-container ${fadeIn ? 'fade-in' : ''}`} ref={videoContainerRef} onMouseMove={handleMouseMove} onClick={handlePopupClick}>
+        {popupVisible && (
+          <div
+            className="popup"
+            
+            style={{ left: popupPosition.left, top: popupPosition.top, zIndex:3}}
+          >
+            
+            <p>Click on screen near the symbol</p>
+          </div>
+        )}
         <div className={`nav ${fadeIn ? 'fade-in' : ''}`}>
           <div className="left-nav">
             <Link href="https://github.com/sus194" title="GitHub">
@@ -96,17 +141,17 @@ function Start(props: any) {
                 <div
                   className="mini-bat"
                   key={miniBat.id}
-                  style={{ transform: `rotate(${miniBat.rotation}deg)` }}
+                  style={{ transform: `rotate(${miniBat.rotation}deg) translate(${miniBat.posX}px, ${miniBat.posY}px)` }}
                 ></div>
               ))}
             </div>
             
           </div>
 
-          <h1 className="sd">Software Developer</h1>
+          <h1 className="sd">Sukhraj Purewal</h1>
           <h1 className="tp">
             <Typewriter
-              words={['Hi there, Welcome to my Website', 'Name is Sukhraj', 'Developer, Chess Player, Hiker', 'Take a look at my Skills and Projects']}
+              words={['Hi there, Welcome to my Website', 'I am a Software Developer', 'I like to play Chess, Hike and Run', 'Take a look at my Skills and Projects']}
               loop={Infinity}
               cursor
               cursorStyle="_"
@@ -129,3 +174,4 @@ function Start(props: any) {
 }
 
 export default Start;
+

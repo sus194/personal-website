@@ -8,7 +8,7 @@
 
 .content-overlay {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -156,10 +156,22 @@
 .mini-bats {
   position: absolute;
   top: 60%;
-  left: 50%;
+  left: 48%;
   width: 100%;
   height: 100%;
   animation: fly 5s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2) ;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .mini-bat {
@@ -168,42 +180,34 @@
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   animation: bat-fly 5s linear infinite;
 }
 
+
+
 @keyframes fly {
   0% {
-    transform: translateY(-170px);
+    transform: translateY(50px);
   }
   100% {
-    transform: translateY(-170px);
+    transform: translateY(50px);
   }
 }
 
 @keyframes bat-fly {
   0% {
-    transform: rotate(0deg) translateX(215px);
+    transform: rotate(0deg) translateX(-340px);
   }
+  
   100% {
-    transform: rotate(360deg) translateX(215px);
+    transform: rotate(360deg) translateX(-340px);
   }
 }
 
-.line {
-  position: absolute;
-  width: 2px;
-  height: 30px;
-  background-color: white;
-  animation: fade-line 7s ease-out;
-}
-
-@keyframes fade-line {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.popup {
+  position: fixed; /* Change to "fixed" */
+  transform: translate(-50%, -50%); /* Add this to center the pop-up */
+  padding: auto;
 }
