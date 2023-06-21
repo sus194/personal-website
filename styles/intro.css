@@ -1,43 +1,81 @@
 .intro-container {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1s;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 
+.background-image {
+  position: absolute;
+  margin-top: 380px;
+  top: 0;
+  left: 50;
+  width: 1000px;
+  height: 400px;
+  background-image: url('/imgs/joker-image.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  z-index: -1;
+  
+}
+
+
+
+
 .intro-title {
+  margin-top: 20px;
+  
   font-size: 50px;
-  margin-top: 60px;
-  margin-bottom: 50px;
+}
+
+.intro-description {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 70px;
+  z-index: 1;
 }
 
 .intro-image {
-  margin-top: 80px;
-  margin-left: -300px; /* Initial position */
+  width: 300px;
+  height: 300px;
+  margin-right: 20px;
+  margin-top: 60px;
   opacity: 0;
-  transition: opacity 1s, margin-left 1s;
+  transform: translateX(-100px);
+  transition: opacity 0.5s, transform 0.5s;
 }
 
 .intro-image.slide-in {
   opacity: 1;
-  margin-left: 190px;
+  transform: translateX(0);
 }
 
-
-
-
-.fade-in {
-
-  opacity: 1;
+.card-container {
+  width: 400px;
+  height: 500px;
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.card-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-
-
-
-
-
+.card-front,
+.card-back {
+  max-width: 100%;
+  max-height: 100%;
+}
 

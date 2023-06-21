@@ -209,5 +209,6 @@
 .popup {
   position: fixed; /* Change to "fixed" */
   transform: translate(-50%, -50%); /* Add this to center the pop-up */
+  top:-15;
   padding: auto;
 }
