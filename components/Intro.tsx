@@ -66,9 +66,9 @@ export default function Intro() {
               </div>
 
               <div className='intro'>
-              <div className='intro-content'>
-                <p>hellofrvtgvtgbvrfvrvrascdscdscs</p>
-              </div>
+                <div className='intro-content'>
+                  <p>hellofrvtgvtgbvrfvrvrascdscdscs</p>
+                </div>
               </div>
 
           </div>
