@@ -17,7 +17,7 @@ function Start(props: any) {
   const [miniBats, setMiniBats] = useState<MiniBat[]>([]);
   const [batCounter, setBatCounter] = useState(0);
   const [removalInProgress, setRemovalInProgress] = useState(false);
-  const [popupPosition, setPopupPosition] = useState({left:0, top: 0});
+  const [popupPosition, setPopupPosition] = useState({left:-1, top: -20});
   const videoContainerRef = useRef(null);
 
   
@@ -33,7 +33,7 @@ function Start(props: any) {
       const rect = container.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
-      setPopupPosition({ left: mouseX+10, top: mouseY +20});
+      setPopupPosition({ left: mouseX+10, top: mouseY +30});
     }
   };
   

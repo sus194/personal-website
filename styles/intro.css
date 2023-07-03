@@ -14,7 +14,12 @@
 
 .intro-container.fade-in{
   opacity: 1;
+  transition: opacity 5s;
+  z-index: 0;
 }
+
+
+
 
 
 
@@ -31,7 +36,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-top: 70px;
-  z-index: 1;
+  
 }
 
 .intro-image {
@@ -41,12 +46,12 @@
   
   margin-top: 60px;
   transform: translateX(-100px);
-  transition: transform 1s;
+  transition: transform 3s;
 }
 
 .intro{
   margin-left: 200px;
-  margin-top: -300px;
+  margin-top: -330px;
   display: flex;
   
   width: 600px;
@@ -59,11 +64,19 @@
   
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-radius: 20px;
+
+}
+
+.intro h1{
+  font-size: 50px;
 }
 
 .intro:hover {
-  background-color: aliceblue;
+  color: black;
+  background-color: white;
 }
+
 
 
 .intro-image.slide-in {
@@ -83,7 +96,7 @@
 
 
 .card-container.fade-out{
-  animation: fadeout 1.5s;
+  animation: fadeout 3s;
 }
 
 @keyframes fadeout {

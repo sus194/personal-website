@@ -7,7 +7,7 @@ export default function Intro() {
   const introRef = useRef<HTMLDivElement>(null);
   const [fadeIn, setFadeIn] = useState(false);
   const [slideIn, setSlideIn] = useState(false);
-
+  
   
 
   const [isFlipped, setIsFlipped] = useState(false);
@@ -44,7 +44,7 @@ export default function Intro() {
             <img src="/imgs/jokercard-back.png" alt="Joker Card Back" className="card-back" />
           </div>
         </ReactCardFlip>
-      </div>
+        </div>
         
        
 
@@ -52,7 +52,10 @@ export default function Intro() {
           <div
           ref={introRef}
           className={`intro-container ${fadeIn ? 'fade-in' : ''}`}
+          
           >
+
+          
           
           <h1 className="intro-title">About</h1>
           
@@ -65,10 +68,10 @@ export default function Intro() {
                 
               </div>
 
-              <div className='intro'>
-                <div className='intro-content'>
-                  <p>hellofrvtgvtgbvrfvrvrascdscdscs</p>
-                </div>
+              <div className='intro' >
+                
+                  <h1>Hi</h1>
+                
               </div>
 
           </div>
