@@ -50,12 +50,12 @@
 }
 
 .intro{
-  margin-left: 200px;
-  margin-top: -330px;
+  margin-left: 400px;
+  margin-top: -380px;
   display: flex;
-  
-  width: 600px;
-  height: 400px;
+  flex-direction: column;
+  width: 805px;
+  height: 500px;
   padding: 10px;
   border: 2px solid white;
   background-color: black;
@@ -65,6 +65,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   border-radius: 20px;
+  transition: background-color 1s;
 
 }
 
@@ -72,10 +73,17 @@
   font-size: 50px;
 }
 
+.highlight{
+  color: red;
+}
+
+
 .intro:hover {
   color: black;
   background-color: white;
+  transition: background-color 1s;
 }
+
 
 
 
