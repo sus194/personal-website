@@ -10,8 +10,61 @@ export default function Intro() {
   const introRef = useRef<HTMLDivElement>(null);
   const [fadeIn, setFadeIn] = useState(false);
   const [slideIn, setSlideIn] = useState(false);
+
+///
+  useEffect(() => {
+    const container:any = document.getElementById('starry-background');
+    const stars:HTMLDivElement[] = [];
+
+    const createStar = () => {
+      const star:HTMLDivElement = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      container.appendChild(star);
+      stars.push(star);
+    };
+
+    const removeStar = () => {
+      const star = stars.pop();
+      star?.remove();
+    };
+
+    const handleMouseMove = (event:any) => {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const offsetX = (mouseX - centerX) * 0.04;
+      const offsetY = (mouseY - centerY) * 0.04;
+
+      container.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    };
+
+    
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+
+    // Create initial stars
+    for (let i = 0; i < 200; i++) {
+      createStar();
+    }
+
+    // Remove stars periodically
+    setInterval(() => {
+      removeStar();
+      createStar();
+    }, 1000);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      
+    };
+  }, []);
   
-  
+  ///
 
   const [isFlipped, setIsFlipped] = useState(false);
   
@@ -54,9 +107,12 @@ export default function Intro() {
           
           <div
           ref={introRef}
+          id= "intro-container"
           className={`intro-container ${fadeIn ? 'fade-in' : ''}`}
           
           >
+            <div id="starry-background"></div>
+
 
           
           

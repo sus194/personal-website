@@ -7,7 +7,7 @@
 
   .contet-overlay{
     position: absolute;
-    
+    display: flex;
     top: 80%;
     left: 50%;
     background-image: url('/imgs/bleach.png');
@@ -21,6 +21,7 @@
   }
 
   .contet-overlay h1{
+    display: flex;
     font-style:oblique;
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
     font-weight: 700;
