@@ -6,7 +6,8 @@ import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Canvas, useFrame } from 'react-three-fiber';
 import * as THREE from 'three';
-import { Group } from 'three';
+import { Group, Points } from 'three';
+import { Start_Background } from './Start_Background';
 
 interface MiniBat {
   id: number;
@@ -16,11 +17,11 @@ interface MiniBat {
 }
 function Start(props: any) {
   const [fadeIn, setFadeIn] = useState(true);
-  const [popupVisible, setPopupVisible] = useState(true);
+  
   const [miniBats, setMiniBats] = useState<MiniBat[]>([]);
   const [batCounter, setBatCounter] = useState(0);
   const [removalInProgress, setRemovalInProgress] = useState(false);
-  const [popupPosition, setPopupPosition] = useState({left:-1, top: -20});
+  
   const videoContainerRef = useRef(null);
 
   
@@ -28,53 +29,6 @@ function Start(props: any) {
   const SkillsClick = () => props.ref2.current?.scrollIntoView({ behavior: 'smooth' });
   const ProjectClick = () => props.ref3.current?.scrollIntoView({ behavior: 'smooth' });
   const GetInTouchClick = () => props.ref4.current?.scrollIntoView({ behavior: 'smooth' });
-  const groupRef = useRef<Group>(null);
-  //particle background
-
-  useFrame(() => {
-    // Update particle animation here
-    
-    const particlePositions = groupRef.current?.children[0].geometry.attributes.position;
-
-    for (let i = 0; i < particlePositions.count; i++) {
-      const x = particlePositions.getX(i);
-      const y = particlePositions.getY(i);
-      const z = particlePositions.getZ(i);
-
-      // Modify particle position or perform animation calculations
-      // Example: particlePositions.setXYZ(i, newX, newY, newZ);
-    }
-
-    // Mark the particle positions as needing an update
-    particlePositions.needsUpdate = true;
-  });
-
-  const generateParticles = () => {
-    const particleCount = 5000;
-    const particles = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array(particleCount * 3);
-
-    for (let i = 0; i < particleCount * 3; i++) {
-      particlePositions[i] = Math.random() * 100 - 50;
-    }
-
-    particles.setAttribute(
-      'position',
-      new THREE.BufferAttribute(particlePositions, 3)
-    );
-
-    const particleMaterial = new THREE.PointsMaterial({
-      color: new THREE.Color(0xffffff),
-      size: 0.02,
-      transparent: true,
-      opacity: 0.8,
-    });
-
-    return <points geometry={particles} material={particleMaterial} />;
-  };
-  
-  
-    
   
   
 
@@ -136,9 +90,9 @@ function Start(props: any) {
       <div className={`video-container ${fadeIn ? 'fade-in' : ''}`} ref={videoContainerRef} >
         
           <Canvas camera={{ position: [0, 0, 5] }}>
-          <group ref={groupRef}>{generateParticles()}</group>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
+            <Start_Background/>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} />
           </Canvas>
 
         <div className={`nav ${fadeIn ? 'fade-in' : ''}`}>
@@ -161,7 +115,7 @@ function Start(props: any) {
           </div>
         </div>
 
-        <div className={`content-overlay ${fadeIn ? 'fade-in' : ''}` } onClick={releaseBats}>
+        <div className={`content-overlay ${fadeIn ? 'fade-in' : ''}` } >
           <div>
             <div
               className="symbol"
