@@ -10,9 +10,10 @@ export const Start_Background = () => {
   
 
   useFrame(({clock}) => {
+    
     const elapsedTime = clock.getElapsedTime();
     
-
+    
     if (groupRef.current) {
       const group = groupRef.current;
 
@@ -21,96 +22,112 @@ export const Start_Background = () => {
 
       if (particle && particle instanceof Points) {
         const particlePositions = particle.geometry.attributes.position;
+        //const particleColors = particle.geometry.attributes.color;
 
         for (let i = 0; i < particlePositions.count; i++) {
             const x = particlePositions.getX(i);
             const y = particlePositions.getY(i);
             const z = particlePositions.getZ(i);
             
-            const waveOffset = Math.sin(elapsedTime* 0.2 + (x )) * 0.01;
-            const waveOffsetz = Math.sin(elapsedTime* 0.5 + (y )) * 0.01; // Adjust the amplitude and frequency as desired
+            const waveOffset = Math.sin(elapsedTime+ (x* 0.2)) * 0.01;
+            const waveOffsetz = Math.sin(elapsedTime + (y* 0.5 )+(x* 0.2)) * 0.01; // Adjust the amplitude and frequency as desired
             const direction = new THREE.Vector2(1, 1);
-            let newZ = (z + waveOffsetz); // Adjust the range as desired
+            let newZ = (z + direction.x *waveOffsetz); // Adjust the range as desired
 
             
+            let newX = (x +  direction.x *waveOffset);
+            let newY = (y +  waveOffset);
             
-            let newY = (y +  direction.y *waveOffset);
+            // Calculate the darkness based on the y position
+            //const darkness = Math.max(0, (newY + 2) / 4);
+
+            // Calculate the new color based on the darkness
+            //const color = new THREE.Color(0xffffff);
+            //color.lerpHSL(new THREE.Color(0x000000), darkness);
+
+
             
-            if (Math.abs(newZ) > 1) {
-                // Adjust the position to stay within the visible area
-                newZ = Math.sign(newZ) * 1; // Adjust maxDistance as needed
-            }
-            particlePositions.setXYZ(i, x, newY, newZ);
+
+
+            particlePositions.setXYZ(i, x, y, newZ);
+            //particleColors.setXYZ(i, color.r, color.g, color.b);
         }
 
         // Mark the particle positions as needing an update
         particlePositions.needsUpdate = true;
+        //particleColors.needsUpdate = true;
       }
     }
+    
   });
 
-  const calculateConcentration = (x: number, y: number) => {
-    // Calculate the concentration based on the ovule shape
-    const a = 2.0; // Adjust the major axis of the ovule
-    const b = 1.0; // Adjust the minor axis of the ovule
+  
 
-    // Calculate the equation of the ovule shape
-    const equation = (x ** 2) / (a ** 2) + (y ** 2) / (b ** 2);
-
-    // Define the concentration based on the ovule shape
-    const maxConcentration = 1.0; // Adjust the maximum concentration as desired
-    const concentration = 1.0 - equation / maxConcentration;
-
-    return concentration > 0 ? concentration : 0; // Ensure the concentration is non-negative
-  };
-
+  
   const generateParticles = () => {
-    const particleCount = 50000;
+    const particleCount = 290000;
     const particles = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
-    const horizontalDistance = 0.05; // Adjust the value as desired
-  
-    for (let i = 0; i < particleCount; i+=3) {
+    const particleColors = new Float32Array(particleCount*3);
+    
+    const center = new THREE.Vector3(-3, 0, 0); // Set the center position of the circle
+    const radiusX = 0.6; // Adjust the X radius of the ellipse as desired
+    const radiusY = 0.9; // Adjust the Y radius of the ellipse as desired
+
+    for (let i = 0; i < particleCount; i++) {
       const index = i * 3;
       let x, y, z;
-
+      const angle = (i / particleCount) * Math.PI * 2;
+      
       const check = Math.random()
-
+/*
         // Define the concentration areas
-        if (check < 0.2) {
-            // Concentrated area (ovule shape)
-            const radius = Math.random() * 0.5 + 0.5; // Adjust the radius of the ovule area
-            const angle = Math.random() * Math.PI * 2;
-      
-            x = Math.cos(angle) * radius;
-            y = Math.sin(angle) * radius;
-      
+        if(check<0.2){
+            const u = Math.random() * 2 - 1; // Random value between -1 and 1
+            const v = Math.random() * 2 - 1; // Random value between -1 and 1
+            const r = Math.sqrt(u * u + v * v); // Calculate the radial distance
+
+            // Normalize the coordinates to fit within the ovule shape
+            x = center.x + Math.cos(angle)*(u / r) * radiusX;
+            y = center.y + Math.sin(angle)*(v / r) * radiusY;
+            z = Math.random() * 0.1 - 0.05;
+        }
+        else{
+             // Sparse area (outside the ovule shape)
+            x = Math.random() * 5 - 2.4; // Adjust the range as desired
+            y = Math.random() * 5 - 1.5; // Adjust the range as desired
             z = Math.random() * 0.1 - 0.05; // Adjust the range as desired
-          } else {
-            // Sparse area (outside the ovule shape)
-            x = Math.random() * 10 - 5; // Adjust the range as desired
-            y = Math.random() * 5 - 2.5; // Adjust the range as desired
-            z = Math.random() * 0.1 - 0.05; // Adjust the range as desired
-          }
+        }
+*/
+        x = Math.random() * 8 - 4; // Adjust the range as desired
+        y = Math.random() * 7 - 3.5; // Adjust the range as desired
+        z = Math.random() * 0.1 - 0.05; // Adjust the range as desired
+
+        const color = new THREE.Color(0xffffff);
+
+        particleColors[index] = color.r;
+        particleColors[index + 1] = color.g;
+        particleColors[index + 2] = color.b;
       
-        // Calculate the concentration at the particle's position
-        const concentration = calculateConcentration(x, y);
-        
-      particlePositions[index] = x*concentration//Math.random() * 16 -8;
-      particlePositions[index + 1] = y*concentration//Math.random() * 10 - 5;
-      particlePositions[index + 2] = z*concentration//Math.random() * 0.1 - 0.05; // Adjust the range as desired
+     // Calculate the concentration at the particle's position
+      particlePositions[index] = x//Math.random() * 16 -8;
+      particlePositions[index + 1] = y//Math.random() * 10 - 5;
+      particlePositions[index + 2] = z//Math.random() * 0.1 - 0.05; // Adjust the range as desired
     }
   
     particles.setAttribute(
-      'position',
-      new THREE.BufferAttribute(particlePositions, 3)
+        'position',
+        new THREE.BufferAttribute(particlePositions, 3)
+    );
+      particles.setAttribute(
+        'color',
+        new THREE.BufferAttribute(particleColors, 3)
     );
   
     const particleMaterial = new THREE.PointsMaterial({
-      color: new THREE.Color(0xffffff),
-      size: 0.01,
+      size: 0.001,
       transparent: true,
-      opacity: 1,
+      opacity: 0.9,
     });
   
     return <points name="particle" geometry={particles} material={particleMaterial} />;
