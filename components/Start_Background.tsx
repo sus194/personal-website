@@ -29,13 +29,16 @@ export const Start_Background = () => {
             const y = particlePositions.getY(i);
             const z = particlePositions.getZ(i);
             
-            const waveOffset = (Math.random()*(x* 0.001) + Math.random()*(y* 0.06)) * 0.01;
+            const waveOffset = (Math.random()*(x* 0.001) + Math.random()*(y* 0.06)) * 0.05;
             
             const waveOffsetz = Math.sin(elapsedTime + (y* 0.8 )+(x* 0.6)) * 0.03; // Adjust the amplitude and frequency as desired
             const direction = new THREE.Vector2(1, 1);
             let newZ = (z + direction.x *waveOffsetz); // Adjust the range as desired
             let newX = x 
             let newY = y
+
+
+            
             
 
             
@@ -68,9 +71,7 @@ export const Start_Background = () => {
     const particlePositions = new Float32Array(particleCount * 3);
     const particleColors = new Float32Array(particleCount*3);
     
-    const center = new THREE.Vector3(-3, 0, 0); // Set the center position of the circle
-    const radiusX = 0.6; // Adjust the X radius of the ellipse as desired
-    const radiusY = 0.9; // Adjust the Y radius of the ellipse as desired
+   
 
     for (let i = 0; i < particleCount; i++) {
       const index = i * 3;
@@ -78,25 +79,7 @@ export const Start_Background = () => {
       const angle = (i / particleCount) * Math.PI * 2;
       
       const check = Math.random()
-/*
-        // Define the concentration areas
-        if(check<0.2){
-            const u = Math.random() * 2 - 1; // Random value between -1 and 1
-            const v = Math.random() * 2 - 1; // Random value between -1 and 1
-            const r = Math.sqrt(u * u + v * v); // Calculate the radial distance
 
-            // Normalize the coordinates to fit within the ovule shape
-            x = center.x + Math.cos(angle)*(u / r) * radiusX;
-            y = center.y + Math.sin(angle)*(v / r) * radiusY;
-            z = Math.random() * 0.1 - 0.05;
-        }
-        else{
-             // Sparse area (outside the ovule shape)
-            x = Math.random() * 5 - 2.4; // Adjust the range as desired
-            y = Math.random() * 5 - 1.5; // Adjust the range as desired
-            z = Math.random() * 0.1 - 0.05; // Adjust the range as desired
-        }
-*/
     if(check<0.3){
 
         x = Math.random() * 5-2.5; // Adjust the range as desired
