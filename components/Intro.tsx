@@ -4,7 +4,7 @@ import '@styles/intro.css';
 import ReactCardFlip from 'react-card-flip';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
-import { FaGithub, FaFile} from 'react-icons/fa';
+import { FaCode, FaFile} from 'react-icons/fa';
 
 export default function Intro() {
   const introRef = useRef<HTMLDivElement>(null);
@@ -143,7 +143,7 @@ export default function Intro() {
 
                 <Link href="https://github.com/sus194?tab=repositories" title="GitHub" className='text-6xl mt-3 flex flex-row'>
                 
-                  <FaGithub />
+                  <FaCode />
                 
                   <span className='text-2xl mt-4 ml-5'>GitHub repos</span>
                   

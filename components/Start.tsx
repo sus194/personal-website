@@ -4,7 +4,7 @@ import '@styles/start.css';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { Canvas, useFrame } from 'react-three-fiber';
+import { Canvas} from 'react-three-fiber';
 import * as THREE from 'three';
 import { Group, Points } from 'three';
 import { Start_Background } from './Start_Background';
