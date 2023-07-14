@@ -1,14 +1,9 @@
 "use client"
-
-
-
-
-
-import Intro from "@/components/Intro"
-import GetInTouch from "@components/GetInTouch"
-import Projects from "@components/Projects"
-import Skills from "@components/Skills"
-import Start from "@components/Start"
+import Intro from "../components/Intro"
+import GetInTouch from "../components/GetInTouch"
+import Projects from "../components/Projects"
+import Skills from "../components/Skills"
+import Start from "../components/Start"
 import "@styles/globals.css"
 import { useEffect, useRef, useState } from "react"
 import Link from 'next/link';
@@ -16,7 +11,8 @@ import {FiMenu } from "react-icons/fi";
 import {IoClose } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { text } from "node:stream/consumers"
-import VideoPlayer from "@components/VideoPlayer"
+import VideoPlayer from "../components/VideoPlayer"
+import React from "react"
 
 export default function page() {
   const page1Ref = useRef<HTMLDivElement>(null);
