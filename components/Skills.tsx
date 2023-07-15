@@ -1,156 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Canvas, useThree, useFrame } from 'react-three-fiber';
+import React from 'react';
+import { Canvas} from 'react-three-fiber';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
-function Planet({ position, radius, texture, onClick, name }) {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const textRef = useRef<THREE.Mesh>(null);
-  const { camera} = useThree();
+import { RevolveGroup} from './SolarSkills/RevolveGroup';
+import { Planet } from './SolarSkills/Planet';
+import { Sun } from './SolarSkills/Sun';
 
-  useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.01;
-    }
-    
-  });
-  
-  useEffect(() => {
-    const fontLoader = new FontLoader();
-    fontLoader.load('/fonts/droid_serif_regular.typeface.json', (font) => {
-      const textGeometry = new TextGeometry(name, {
-        font: font,
-        size: 0.2,
-        height: 0.05,
-      });
-      const textMaterial = new THREE.MeshStandardMaterial({ color: 'white' });
-      const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-      textMesh.position.set(position[0], position[1] + radius + 0.3, position[2]);
-      textMesh.rotation.copy(camera.rotation);
-      textRef.current?.add(textMesh);
-    });
-  }, []);
-
-  return (
-    <group>
-      <mesh ref={meshRef} position={position}>
-        <sphereGeometry args={[radius]} />
-        <meshStandardMaterial map={texture} />
-      </mesh>
-
-      <mesh ref={textRef} />
-
-      
-      {name == 'satrun' && (
-        <mesh position={position} rotation={[181, 0, 0]}>
-          <ringGeometry args={[0.6, 0.9, 30, 0, 0, 6.283185307179586]} />
-          <meshStandardMaterial map={new THREE.TextureLoader().load('imgs/satrun-ring.jpeg')} side={THREE.DoubleSide} />
-          
-        </mesh>
-      )}
-    </group>
-
-    
-  );
-}
-
-function Sun() {
-  const meshRef = useRef<THREE.Mesh>(null);
-
-  useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.02;
-    }
-  });
-  
-  return (
-    <group >
-      <mesh ref={meshRef} position={[0, 0, 0]}>
-        <sphereGeometry args={[1]} />
-        <meshStandardMaterial map={new THREE.TextureLoader().load('imgs/sun.jpeg')} />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[1.5, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[2.2, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[2.6, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[3.6, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[5.1, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[7.6, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[11, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-
-      <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-      <torusGeometry args={[12.5, 0.02, 64, 64]} />
-      <meshStandardMaterial color="gray" />
-      </mesh>
-
-    </group>
-
-    
-  );
-}
-
-
-
-function OrbitControl() {
-  const { camera, gl } = useThree();
-
-  useEffect(() => {
-    const controls = new OrbitControls(camera, gl.domElement);
-
-    // Optionally, customize the controls' behavior
-    controls.enableDamping = true; // Add smooth damping effect to camera movement
-    controls.enablePan = true; // Enable panning across the scene
-
-    return () => {
-      controls.dispose(); // Clean up the controls when the component unmounts
-    };
-  }, [camera, gl.domElement]);
-
-  return null;
-}
-
-
-function RevolveGroup({ children }) {
-  const groupRef = useRef<THREE.Group>(null);
-  useFrame(({ clock }) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = clock.getElapsedTime() * 0.1; // Adjust the revolving speed as needed
-    }
-  });
-
-  return <group ref={groupRef}>{children}</group>;
-}
-
-
+import { OrbitControl } from './SolarSkills/OrbitControl';
 
 export default function Skills() {
   const spheres = [
@@ -214,8 +69,6 @@ export default function Skills() {
       texture: new THREE.TextureLoader().load('imgs/neptune.jpeg'),
     },
   ];
-
-
   const numSpheres = spheres.length;
   
   const angleIncrement = (2 * Math.PI) / numSpheres;
