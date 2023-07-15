@@ -1,26 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '@styles/start.css';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Canvas} from 'react-three-fiber';
-import * as THREE from 'three';
-import { Group, Points } from 'three';
 import { Start_Background } from './Start_Background';
 
-interface MiniBat {
-  id: number;
-  rotation: number;
-  posX: number;
-  posY: number;
-}
 function Start(props: any) {
   const [fadeIn, setFadeIn] = useState(true);
-  
-  const [miniBats, setMiniBats] = useState<MiniBat[]>([]);
-  const [batCounter, setBatCounter] = useState(0);
-  const [removalInProgress, setRemovalInProgress] = useState(false);
   
   const videoContainerRef = useRef(null);
 
@@ -31,55 +19,13 @@ function Start(props: any) {
   const GetInTouchClick = () => props.ref4.current?.scrollIntoView({ behavior: 'smooth' });
   
   
-
-  const releaseBats = () => {
-    if (miniBats.length > 0) {
-      // Start the removal process
-      setRemovalInProgress(true);
-    } else {
-      // Release new mini bats with a 1-second delay between each release
-      setBatCounter(10);
-    }
-  };
   
-  useEffect(() => {
-    const deleteOriginBats = () => {
-      const originBatIndex = miniBats.findIndex((miniBat) => miniBat.posX === 0 && miniBat.posY === 0);
-      if (originBatIndex !== -1&&removalInProgress) {
-        
-          setMiniBats((prevMiniBats) => prevMiniBats.filter((_, index) => index !== originBatIndex));
-       
-      } else {
-        setRemovalInProgress(false); // All origin bats have been deleted
-      }
-    };
   
-    if (removalInProgress) {
-      deleteOriginBats(); // Start the removal process
-    }
-  }, [miniBats, removalInProgress]);
   
   
   
 
-  useEffect(() => {
-    if (batCounter > 0) {
-      const timer = setTimeout(() => {
-        const newMiniBat = {
-          id: Date.now(),
-          rotation: Math.random() * 360,
-          posX: 0,
-          posY: 0,
-        };
-        setMiniBats((prevMiniBats) => [...prevMiniBats, newMiniBat]);
-        setBatCounter((prevCounter) => prevCounter - 1);
-      }, 500); // Delay each bat release by 1 second
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [batCounter]);
+  
 
 
 
@@ -120,15 +66,6 @@ function Start(props: any) {
             <div
               className="symbol"
             ></div>
-            <div className="mini-bats">
-              {miniBats.map((miniBat) => (
-                <div
-                  className="mini-bat"
-                  key={miniBat.id}
-                  style={{ transform: `rotate(${miniBat.rotation}deg) translate(${miniBat.posX}px, ${miniBat.posY}px)` }}
-                ></div>
-              ))}
-            </div>
             
           </div>
 

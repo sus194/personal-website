@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Canvas} from 'react-three-fiber';
 import * as THREE from 'three';
 import { RevolveGroup} from './SolarSkills/RevolveGroup';
@@ -6,6 +6,9 @@ import { Planet } from './SolarSkills/Planet';
 import { Sun } from './SolarSkills/Sun';
 
 import { OrbitControl } from './SolarSkills/OrbitControl';
+import { IconContext } from 'react-icons';
+import { FaArrowCircleDown } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function Skills() {
   const spheres = [
@@ -21,7 +24,7 @@ export default function Skills() {
       z:2,
       name:"venus",
       radius: 0.18,
-      texture: new THREE.TextureLoader().load('imgs/venus.jpeg'),
+      texture: new THREE.TextureLoader().load('imgs/venus.avif'),
     },
 
     {
@@ -49,7 +52,7 @@ export default function Skills() {
     {
       x:10,
       z:3.5,
-      name:"satrun",
+      name:"saturn",
       radius: 0.46,
       texture: new THREE.TextureLoader().load('imgs/satrun.webp'),
     },
@@ -70,18 +73,17 @@ export default function Skills() {
     },
   ];
   const numSpheres = spheres.length;
-  
   const angleIncrement = (2 * Math.PI) / numSpheres;
-
+  
   return (
-    <Canvas>
+      <><Canvas>
       <ambientLight />
       <pointLight position={[5, 5, 3]} intensity={3} />
       <pointLight position={[-3, -3, 2]} />
       <OrbitControl />
-      <Sun/>
+      <Sun />
       <RevolveGroup>
-      {spheres.map((sphere, index) => {
+        {spheres.map((sphere, index) => {
           const angle = index * angleIncrement;
           const x = sphere.x * Math.cos(angle);
           const z = sphere.z * Math.sin(angle);
@@ -92,12 +94,12 @@ export default function Skills() {
               position={position}
               radius={sphere.radius}
               texture={sphere.texture}
-              name = {sphere.name}
-              onClick
-            />
+              name={sphere.name}
+              onClick />
           );
         })}
       </RevolveGroup>
     </Canvas>
+    </>
   );
 }

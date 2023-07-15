@@ -2,11 +2,9 @@ import React, { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { Group, Points } from 'three';
 import { useFrame } from 'react-three-fiber';
-import { Clock } from 'three';
 
 export const Start_Background = () => {
   const groupRef = useRef<Group>(null);
-  const clockRef = useRef<Clock>(new Clock());
   
 
   useFrame(({clock}) => {
@@ -22,41 +20,23 @@ export const Start_Background = () => {
 
       if (particle && particle instanceof Points) {
         const particlePositions = particle.geometry.attributes.position;
-        const particleColors = particle.geometry.attributes.color;
 
         for (let i = 0; i < particlePositions.count; i++) {
             const x = particlePositions.getX(i);
             const y = particlePositions.getY(i);
             const z = particlePositions.getZ(i);
             
-            const waveOffset = (Math.random()*(x* 0.001) + Math.random()*(y* 0.06)) * 0.05;
-            
             const waveOffsetz = Math.sin(elapsedTime + (y* 0.8 )+(x* 0.6)) * 0.03; // Adjust the amplitude and frequency as desired
             const direction = new THREE.Vector2(1, 1);
             let newZ = (z + direction.x *waveOffsetz); // Adjust the range as desired
-            let newX = x 
-            let newY = y
 
-
+            particlePositions.setXYZ(i, x, y, newZ);
             
-            
-
-            
-            
-            // Calculate the darkness based on the y position
-            const darkness = Math.max(0, (newZ+(Math.random()*0.01+1)) / (Math.random()*0.01+2));
-
-            // Calculate the new color based on the darkness
-            const color = new THREE.Color(0xffffff);
-            color.lerpHSL(new THREE.Color(0xffffff), darkness);
-
-            particlePositions.setXYZ(i, newX, newY, newZ);
-            particleColors.setXYZ(i, color.r, color.g, color.b);
         }
 
         // Mark the particle positions as needing an update
         particlePositions.needsUpdate = true;
-        particleColors.needsUpdate = true;
+        
       }
     }
     
@@ -69,14 +49,12 @@ export const Start_Background = () => {
     const particleCount = 90000;
     const particles = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
-    const particleColors = new Float32Array(particleCount*3);
     
    
 
     for (let i = 0; i < particleCount; i++) {
       const index = i * 3;
-      let x, y, z;
-      const angle = (i / particleCount) * Math.PI * 2;
+      let x: number, y: number, z: number;
       
       const check = Math.random()
 
@@ -109,11 +87,6 @@ export const Start_Background = () => {
 
     }
 
-        const color = new THREE.Color(0xffffff);
-
-        particleColors[index] = color.r;
-        particleColors[index + 1] = color.g;
-        particleColors[index + 2] = color.b;
       
      // Calculate the concentration at the particle's position
       particlePositions[index] = x//Math.random() * 16 -8;
@@ -125,16 +98,12 @@ export const Start_Background = () => {
         'position',
         new THREE.BufferAttribute(particlePositions, 3)
     );
-      particles.setAttribute(
-        'color',
-        new THREE.BufferAttribute(particleColors, 3)
-    );
   
     const particleMaterial = new THREE.PointsMaterial({
       size: 0.001,
       transparent: true,
       opacity: 1,
-      vertexColors: true, // Enable vertex colors
+      color:0xffffff
     });
   
     return <points name="particle" geometry={particles} material={particleMaterial} />;

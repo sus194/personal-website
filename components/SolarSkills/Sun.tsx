@@ -19,43 +19,43 @@ export function Sun() {
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[1.5, 0.02, 64, 64]} />
+        <torusGeometry args={[1.5, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[2.2, 0.02, 64, 64]} />
+        <torusGeometry args={[2.2, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[2.6, 0.02, 64, 64]} />
+        <torusGeometry args={[2.6, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[3.6, 0.02, 64, 64]} />
+        <torusGeometry args={[3.6, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[5.1, 0.02, 64, 64]} />
+        <torusGeometry args={[5.1, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[7.6, 0.02, 64, 64]} />
+        <torusGeometry args={[7.6, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[11, 0.02, 64, 64]} />
+        <torusGeometry args={[11, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[12.5, 0.02, 64, 64]} />
+        <torusGeometry args={[12.5, 0.01, 64, 64]} />
         <meshStandardMaterial color="gray" />
         </mesh>
   

@@ -42,11 +42,10 @@ export function Planet({ position, radius, texture, onClick, name }) {
         <mesh ref={textRef} />
   
         
-        {name == 'satrun' && (
+        {name == 'saturn' && (
           <mesh position={position} rotation={[181, 0, 0]}>
             <ringGeometry args={[0.6, 0.9, 30, 0, 0, 6.283185307179586]} />
             <meshStandardMaterial map={new THREE.TextureLoader().load('imgs/satrun-ring.jpeg')} side={THREE.DoubleSide} />
-            
           </mesh>
         )}
       </group>
