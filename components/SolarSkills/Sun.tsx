@@ -20,43 +20,48 @@ export function Sun() {
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
         <torusGeometry args={[1.5, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <meshStandardMaterial color="red" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
         <torusGeometry args={[2.2, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <meshStandardMaterial color="red" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[2.6, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <torusGeometry args={[3.2, 0.01, 64, 64]} />
+        <meshStandardMaterial color="red" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[3.6, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <torusGeometry args={[4.1, 0.01, 64, 64]} />
+        <meshStandardMaterial color="red" />
+        </mesh>
+
+       { /*<mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
+            <ringGeometry args={[3.9, 4.25, 60, 8, 6.283185307179586, 6.283185307179586]} />
+            <meshStandardMaterial map={new THREE.TextureLoader().load('imgs/astroid-belt.webp')} side={THREE.DoubleSide} />
+    </mesh>*/}
+  
+        <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
+        <torusGeometry args={[6, 0.01, 64, 64]} />
+        <meshStandardMaterial color="red" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[5.1, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
-        </mesh>
-  
-        <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
-        <torusGeometry args={[7.6, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <torusGeometry args={[8.8, 0.01, 64, 64]} />
+        <meshStandardMaterial color="red" />
         </mesh>
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
         <torusGeometry args={[11, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <meshStandardMaterial color="red" />
         </mesh>
   
   
         <mesh position={[0, 0, 0]} rotation={[300, 0, 0]}>
         <torusGeometry args={[12.5, 0.01, 64, 64]} />
-        <meshStandardMaterial color="gray" />
+        <meshStandardMaterial color="red" />
         </mesh>
   
       </group>

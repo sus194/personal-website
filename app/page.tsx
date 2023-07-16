@@ -9,10 +9,10 @@ import { useEffect, useRef, useState } from "react"
 import Link from 'next/link';
 import {FiMenu } from "react-icons/fi";
 import {IoClose } from "react-icons/io5";
-import { IconContext } from "react-icons";
-import { text } from "node:stream/consumers"
+
 import VideoPlayer from "../components/VideoPlayer"
 import React from "react"
+
 
 export default function page() {
   const page1Ref = useRef<HTMLDivElement>(null);
@@ -25,7 +25,7 @@ export default function page() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarOpenf, setIsSidebarOpenf] = useState(false);
   const [isvideoplain, setisvideoplain] = useState(true);
-  const [ispopup, setispopup] = useState(true);
+  
 
   const isplaying=(props: boolean)=>{
     if(!props){
@@ -64,12 +64,6 @@ export default function page() {
     const scrollContainer = scrollContainerRef.current;
     scrollContainer?.addEventListener("scroll", handleScroll);
 
-    if(["section3"].includes(activeSection)){
-      setTimeout(() => {
-        setispopup(false);
-      }, 3000);
-    }
-
     return () => {
       scrollContainer?.removeEventListener("scroll", handleScroll);
     };
@@ -84,6 +78,8 @@ export default function page() {
   const GetInTouchClick = () => page5Ref.current?.scrollIntoView({ behavior: 'smooth' });
 
   const HomeClick = () => page1Ref.current?.scrollIntoView({ behavior: 'smooth' });
+
+  
 
   return (
     <div>
@@ -104,16 +100,12 @@ export default function page() {
         <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref}/></section>
         
         <section id="section2"  ref={page2Ref} ><Intro /></section>
-        <section id="section3" ref={page3Ref} ><Skills /></section>
+        <section id="section3" ref={page3Ref} ><Skills about = {page2Ref} project = {page4Ref} baropen = {isSidebarOpen}/></section>
         <section id="section4"  ref={page4Ref} ><Projects/></section>
         <section id="section5" ref={page5Ref}><GetInTouch/></section>
         </>
       )}
       </div>
-      {ispopup&&["section3"].includes(activeSection)&&(
-      <div className="absolute top-5 right-20 p-4 text-white bg-gray-800">
-          Use arrows or the menu to navigate
-      </div>)}
 
       {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
       <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>

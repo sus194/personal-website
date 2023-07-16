@@ -12,7 +12,7 @@ export function OrbitControl() {
       // Optionally, customize the controls' behavior
       controls.enableDamping = true; // Add smooth damping effect to camera movement
       controls.enablePan = true; // Enable panning across the scene
-  
+      
       return () => {
         controls.dispose(); // Clean up the controls when the component unmounts
       };

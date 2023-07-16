@@ -26,14 +26,16 @@ export function Planet({ position, radius, texture, onClick, name }) {
         });
         const textMaterial = new THREE.MeshStandardMaterial({ color: 'white' });
         const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-        textMesh.position.set(position[0], position[1] + radius + 0.3, position[2]);
+        textMesh.position.set(position[0]-((name.length)*0.1 -0.4), position[1] + radius+0.1, position[2]);
         textMesh.rotation.copy(camera.rotation);
+        textMesh.rotation.z = 0
+        textMesh.rotation.x = 0
         textRef.current?.add(textMesh);
       });
     }, []);
   
     return (
-      <group>
+      <group onClick={onClick}>
         <mesh ref={meshRef} position={position}>
           <sphereGeometry args={[radius]} />
           <meshStandardMaterial map={texture} />
@@ -42,7 +44,7 @@ export function Planet({ position, radius, texture, onClick, name }) {
         <mesh ref={textRef} />
   
         
-        {name == 'saturn' && (
+        {name == 'TensorFlow' && (
           <mesh position={position} rotation={[181, 0, 0]}>
             <ringGeometry args={[0.6, 0.9, 30, 0, 0, 6.283185307179586]} />
             <meshStandardMaterial map={new THREE.TextureLoader().load('imgs/satrun-ring.jpeg')} side={THREE.DoubleSide} />
