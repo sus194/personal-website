@@ -110,14 +110,14 @@ export default function Skills(props:any) {
   const angleIncrement = (2 * Math.PI) / numSpheres;
 
   const planetColors = {
-    ASP_Net_Core: '#ffcc00',
-    DevOps: '#ff6600',
-    Python: '#0099ff',
+    ASP_Net_Core: '#A020F0',
+    DevOps: '#1520A6',
+    Python: '#FFd300',
     Web_Development: '#ff3300',
-    Docker: '#ff9933',
-    TensorFlow: '#ffcc99',
+    Docker: '#0099ff',
+    TensorFlow: '#ff6600',
     Databases: '#66ccff',
-    Git: '#003399',
+    Git: '#3CB043',
   };
   
   
