@@ -22,6 +22,7 @@ export default function Skills(props:any) {
       name:"Docker",
       description:"I have utilized Docker to containerize applications and create reproducible development and deployment environments. By defining Dockerfiles and using Docker Compose, I have packaged applications and their dependencies into lightweight containers, enabling easier deployment, scaling, and portability across different platforms.",
       radius: 0.1,
+      color:'#0099ff',
       texture: new THREE.TextureLoader().load('imgs/mercury.png'),
       icon: <SiDocker /> 
     },
@@ -31,6 +32,7 @@ export default function Skills(props:any) {
       name:"DevOps",
       description:" In my projects, I have implemented DevOps practices to streamline the software delivery process. I have automated build and deployment pipelines, integrated continuous integration and continuous deployment (CI/CD) tools, and collaborated with cross-functional teams to ensure efficient collaboration and faster time-to-market.",
       radius: 0.18,
+      color:'#1520A6',
       icon: <IoMdInfinite />,
       texture: new THREE.TextureLoader().load('imgs/venus.avif'),
     },
@@ -41,6 +43,7 @@ export default function Skills(props:any) {
       name:"Python",
       description:"I have employed Python for various purposes, including web development, data analysis, and scripting. I have utilized Python's extensive libraries and frameworks such as Flask and Django for building web applications, performed data analysis using pandas and NumPy, and written automation scripts to simplify repetitive tasks.",
       radius: 0.2,
+      color:'#FFd300',
       texture: new THREE.TextureLoader().load('imgs/earth.jpeg'),
       icon: <SiPython />
     },
@@ -50,6 +53,7 @@ export default function Skills(props:any) {
       name:"Web Development",
       description:"As a web developer, I have worked on creating visually appealing and functional websites. I have used HTML, CSS, and JavaScript to build responsive user interfaces, implemented front-end frameworks like React or Angular, and integrated back-end technologies like ASP.NET Core, Express.js or Django to handle server-side logic and database interactions.",
       radius: 0.2,
+      color:'#ff3300',
       texture: new THREE.TextureLoader().load('imgs/mars.jpeg'),
       icon: <TbWorldWww />
     },
@@ -61,6 +65,7 @@ export default function Skills(props:any) {
       description:"I have utilized ASP.NET Core to develop web applications using the C# programming language. I have leveraged its features such as MVC pattern and built-in support for dependency injection to create scalable and maintainable web solutions.",
       radius: 0.7,
       texture: new THREE.TextureLoader().load('imgs/jupiter.jpeg'),
+      color:'#A020F0',
       icon: <SiDotnet /> 
     },
     {
@@ -69,6 +74,7 @@ export default function Skills(props:any) {
       name:"TensorFlow",
       description:" I have employed TensorFlow for machine learning and deep learning projects. I have used its extensive API and pre-trained models to build and train neural networks for tasks such as image recognition, natural language processing, and sentiment analysis. TensorFlow has enabled me to leverage the power of machine learning algorithms and implement complex models efficiently.",
       radius: 0.46,
+      color:'#ff6600',
       texture: new THREE.TextureLoader().load('imgs/satrun.webp'),
       icon: <SiTensorflow />
     },
@@ -79,6 +85,7 @@ export default function Skills(props:any) {
       name:"Databases",
       description:"In my projects, I have worked with various databases to store and manage data effectively. I have utilized relational databases like MySQL or PostgreSQL to design and optimize database schemas, write SQL queries, and ensure data integrity. Additionally, I have also worked with NoSQL databases like MongoDB for handling unstructured or real-time data requirements.",
       radius: 0.5,
+      color:'#66ccff',
       texture: new THREE.TextureLoader().load('imgs/uranus.jpeg'),
       icon: <FaDatabase />
     },
@@ -88,6 +95,7 @@ export default function Skills(props:any) {
       name:"Git",
       description:"I have used Git as a version control system to manage source code and collaborate with other developers. I have created repositories, utilized branching and merging strategies to work on different features or bug fixes concurrently, and used Git workflows to ensure smooth collaboration and efficient code management.",
       radius: 0.5,
+      color:'#3CB043',
       texture: new THREE.TextureLoader().load('imgs/neptune.jpeg'),
       icon: <SiGit />
     },
@@ -99,26 +107,17 @@ export default function Skills(props:any) {
   const [clickedPlanet, setClickedPlanet] = useState<String>('');
   const [clickedDes, setClickedDes] = useState<String>('');
   const [clickedIcon, setClickedIcon] = useState<any>();
+  const [clickedColor, setClickedColor] = useState<String>('');
 
-  const handlePlanetClick = (name: String, description:String, icon: any) => {
+  const handlePlanetClick = (name: String, description:String, icon: any,color:String) => {
     setClickedPlanet(name);
     setClickedDes(description);
-    setClickedIcon(icon)
+    setClickedIcon(icon);
+    setClickedColor(color);
   };
   
   const numSpheres = spheres.length;
   const angleIncrement = (2 * Math.PI) / numSpheres;
-
-  const planetColors = {
-    ASP_Net_Core: '#A020F0',
-    DevOps: '#1520A6',
-    Python: '#FFd300',
-    Web_Development: '#ff3300',
-    Docker: '#0099ff',
-    TensorFlow: '#ff6600',
-    Databases: '#66ccff',
-    Git: '#3CB043',
-  };
   
   
       
@@ -126,7 +125,7 @@ export default function Skills(props:any) {
     <div className="flex items-center justify-center w-screen h-screen relative overflow-auto">
     <div className="absolute mt-6 inset-0 bg-black bg-opacity-50 flex flex-col items-center ">
       <h1 className="text-5xl text-white mb-5">Skills</h1>
-      <section className="text-xl text-white border border-white h-fit p-4" style={{ borderRadius:'20px',maxWidth: '900px', wordWrap: 'break-word', backgroundColor:clickedPlanet ? planetColors[String(clickedPlanet.replace('.','_').replace(" ",'_'))] : '#000'}}>
+      <section className="text-xl text-white border border-white h-fit p-4" style={{ borderRadius:'20px',maxWidth: '900px', wordWrap: 'break-word', backgroundColor: String(clickedColor)}}>
         {clickedPlanet ? (
           <div>
             <div className="flex items-center justify-center -mt-4">
@@ -171,7 +170,7 @@ export default function Skills(props:any) {
               radius={sphere.radius}
               texture={sphere.texture}
               name={sphere.name}
-              onClick={() => handlePlanetClick(sphere.name, sphere.description, sphere.icon)}
+              onClick={() => handlePlanetClick(sphere.name, sphere.description, sphere.icon,sphere.color)}
               
               />
           );
