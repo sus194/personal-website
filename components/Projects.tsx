@@ -10,9 +10,7 @@ export default function Projects() {
       name: 'Project 1',
       description: 'Description for Project 1',
       images: [
-        'image1.jpg',
-        'image2.jpg',
-        'image3.jpg',
+        'imgs/projects/aidiscord-bot/aibot-ai.png',
         // Add more image URLs here
       ],
     },
@@ -20,9 +18,8 @@ export default function Projects() {
       name: 'Project 2',
       description: 'Description for Project 2',
       images: [
-        'image4.jpg',
-        'image5.jpg',
-        'image6.jpg',
+        'imgs/projects/knight-run/knight-run-demo1.png',
+        
         // Add more image URLs here
       ],
     },
