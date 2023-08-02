@@ -37,19 +37,7 @@ export default function Projects() {
 
   return (
     <div>
-      <Slider {...settings}>
-        {projects.map((project, index) => (
-          <div key={index}>
-            <h2>{project.name}</h2>
-            <p>{project.description}</p>
-            <div>
-              {project.images.map((image, imgIndex) => (
-                <img key={imgIndex} src={image} alt={`Image ${imgIndex + 1}`} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </Slider>
+     
     </div>
   );
 }
