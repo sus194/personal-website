@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { Group, Points } from 'three';
-import { useFrame } from 'react-three-fiber';
+import { useFrame } from '@react-three/fiber';
 
 export const Start_Background = () => {
   const groupRef = useRef<Group>(null);
@@ -100,7 +100,7 @@ export const Start_Background = () => {
     );
   
     const particleMaterial = new THREE.PointsMaterial({
-      size: 0.001,
+      size: 0.007,
       transparent: true,
       opacity: 1,
       color:0xffffff

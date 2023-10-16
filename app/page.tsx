@@ -101,8 +101,8 @@ export default function page() {
         
         <section id="section2"  ref={page2Ref} ><Intro /></section>
         <section id="section3" ref={page3Ref} ><Skills about = {page2Ref} project = {page4Ref} baropen = {isSidebarOpen}/></section>
-        <section id="section4"  ref={page4Ref} ><Projects/></section>
-        <section id="section5" ref={page5Ref}><GetInTouch/></section>
+        <section id="section4"  ref={page4Ref} ><Projects activesection = {activeSection}/></section>
+        {/* <section id="section5" ref={page5Ref}><GetInTouch/></section>*/}
         </>
       )}
       </div>
@@ -127,9 +127,9 @@ export default function page() {
           <li>
           <Link onClick={ProjectClick}  href={""}>Projects</Link>
             </li>
-          <li>
+            {/* <li>
           <Link onClick={GetInTouchClick}  href={""}>Get in Touch</Link>
-            </li>
+            </li> */}
           
         </ul>
         <div className="bottom-links">

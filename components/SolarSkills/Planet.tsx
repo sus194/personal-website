@@ -1,10 +1,10 @@
 import React, { useEffect, useRef} from 'react';
-import {useThree, useFrame } from 'react-three-fiber';
+import {useThree, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 
-export function Planet({ position, radius, texture, onClick, name }) {
+export function Planet({ position, radius, texture, onClick, name }:any) {
     const meshRef = useRef<THREE.Mesh>(null);
     const textRef = useRef<THREE.Mesh>(null);
     const { camera} = useThree();

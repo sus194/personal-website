@@ -32,6 +32,7 @@
     "slick-carousel": "^1.8.1",
     "tailwindcss": "3.3.2",
     "three": "^0.154.0",
+    "tw-elements": "^1.0.0",
     "typescript": "5.0.4",
     "typewriter-effect": "^2.20.1"
   },

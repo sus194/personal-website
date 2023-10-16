@@ -4,7 +4,7 @@ import '@styles/start.css';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { Canvas} from 'react-three-fiber';
+import { Canvas} from '@react-three/fiber';
 import { Start_Background } from './Start_Background';
 
 function Start(props: any) {
@@ -18,19 +18,6 @@ function Start(props: any) {
   const ProjectClick = () => props.ref3.current?.scrollIntoView({ behavior: 'smooth' });
   const GetInTouchClick = () => props.ref4.current?.scrollIntoView({ behavior: 'smooth' });
   
-  
-  
-  
-  
-  
-  
-
-  
-
-
-
-  
-
   return (
     <>
       <div className={`video-container ${fadeIn ? 'fade-in' : ''}`} ref={videoContainerRef} >
@@ -53,11 +40,11 @@ function Start(props: any) {
                 <FaLinkedin />
               </IconContext.Provider>
             </Link>
-            <Link onClick={GetInTouchClick} title="Get In Touch" href={''}>
+            {/* <Link onClick={GetInTouchClick} title="Get In Touch" href={''}>
               <IconContext.Provider value={{ className: 'left-icon' }}>
                 <FaEnvelope />
               </IconContext.Provider>
-            </Link>
+            </Link>*/}
           </div>
         </div>
 

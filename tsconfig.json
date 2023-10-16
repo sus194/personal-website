@@ -23,6 +23,6 @@
       "@*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/SolarSkills/Planet.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/SolarSkills/Planet.js", "components/SolarSkills/Planet.tsx"],
   "exclude": ["node_modules"]
 }

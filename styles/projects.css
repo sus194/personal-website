@@ -1,0 +1,38 @@
+
+.project_container{
+    background: rgba(58, 58, 58, 0.5333);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 15px;
+}
+
+.css-blurry-gradient{
+    position: absolute;
+    transform: translate(-50%, 0%);
+    width: 800px;
+    height: 800px;
+    border-radius: 50% 22% 40% 80%;  
+    filter: blur(100px);
+    opacity: 0.5;
+    z-index: -50;
+    transition: background 0.5s ease;
+
+}
+
+.gradient-0{
+    background: radial-gradient(circle at 50% 50%,rgba(76, 0, 255, 1), rgba(76, 0, 255, 0));
+}
+
+.gradient-1{
+    background: radial-gradient(circle at 50% 50%,rgb(61, 209, 64), rgba(76, 0, 255, 0));
+}
+
+.gradient-2{
+    background: radial-gradient(circle at 50% 50%,rgb(82, 139, 232), rgba(76, 0, 255, 0));
+}
+
+.gradient-3{
+    background: radial-gradient(circle at 50% 50%,rgb(178, 52, 169), rgba(76, 0, 255, 0));
+}
+
+ 

@@ -1,10 +1,10 @@
 import React, { useRef} from 'react';
-import { useFrame } from 'react-three-fiber';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 
 
-export function RevolveGroup({ children }) {
+export function RevolveGroup({ children }:any) {
     const groupRef = useRef<THREE.Group>(null);
     useFrame(({ clock }) => {
       if (groupRef.current) {
