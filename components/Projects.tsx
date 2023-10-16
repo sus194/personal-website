@@ -188,7 +188,7 @@ export default function Projects(props:any) {
                 </Link>
                 <div className={`${project.skillsmove} mb-3`}>
                   {project.skills.map((skill,index)=>(
-                    <div className='inline-block uppercase text-gray-500'>
+                    <div key={index} className='inline-block uppercase text-gray-500'>
                       {skill}
                     </div>
                   ))}
