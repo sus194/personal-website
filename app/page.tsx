@@ -14,7 +14,7 @@ import VideoPlayer from "../components/VideoPlayer"
 import React from "react"
 
 
-export default function page() {
+export default function Page() {
   const page1Ref = useRef<HTMLDivElement>(null);
   const page2Ref = useRef<HTMLDivElement>(null);
   const page3Ref = useRef<HTMLDivElement>(null);
