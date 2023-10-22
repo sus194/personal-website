@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import {Cloudinary} from "@cloudinary/url-gen";
+import {AdvancedVideo} from '@cloudinary/react';
 
 import '@styles/video.css';
 
-const VideoPlayer = (props: any) => {
+const VideoPlayer = (props:any) => {
   const videoRef = useRef<any>();
   const [isPaused, setIsPaused] = useState(false);
   const [isvideoplain, setisvideoplain] = useState(true);
@@ -29,13 +31,25 @@ const VideoPlayer = (props: any) => {
         setisvideoplain(false)
     }
   };
+
+  useEffect(() => {
+    // Fetch the video file when the component mounts
+    fetch('/video/bleach.mp4') // Adjust the URL to your video location
+      .then((response) => response.blob())
+      .then((videoBlob) => {
+        const videoURL = URL.createObjectURL(videoBlob);
+        videoRef.current.src = videoURL;
+      });
+  }, []);
+
   return (
     <div className='ooverlay'>
         {props.handleCallback(isvideoplain)}
     {isvideoplain?(
-    <><video onClick={handleVideoClick} ref={videoRef} onTimeUpdate={isPaused ? handleideoTimeUpdate : handleVideoTimeUpdate} autoPlay muted loop className="video">
-                  <source src="/video/bleach.mp4" type="video/mp4" />
-              </video>
+    <>
+    
+   <video onClick={handleVideoClick} ref={videoRef} onTimeUpdate={isPaused ? handleideoTimeUpdate : handleVideoTimeUpdate} autoPlay muted loop className="video">      
+    </video>
     {show?(
     <div className={`contet-overlay ${show ? 'fade-in' : ''}`}>
         <h1>Click To Continue</h1>

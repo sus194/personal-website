@@ -10,7 +10,7 @@
     display: flex;
     top: 80%;
     left: 50%;
-    /*background-image: url('/imgs/bleach.png');*/
+    background-image: url('/imgs/bleach.png');
     background-size: cover;
     background-position: center;
     transform: translate(-50%, -50%);
