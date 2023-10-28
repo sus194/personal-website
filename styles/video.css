@@ -1,8 +1,9 @@
 
   
   .video {
-    height: 100%;
-    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
+    object-fit: fill;
   }
 
   .contet-overlay{

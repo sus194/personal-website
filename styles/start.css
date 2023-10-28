@@ -143,8 +143,7 @@
 }
 
 .symbol {
-  padding: 300px 100px;
-
+  padding: 20% 50%;
   background-image: url('/imgs/batman-symbol.png');
   background-size: contain;
   background-repeat: no-repeat;

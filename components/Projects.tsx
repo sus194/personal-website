@@ -163,7 +163,7 @@ export default function Projects(props:any) {
     <>
       <div className=' w-full h-full'>
         <h3 className=" w-full object-cover select-none pl-[20px] text-center text-2xl uppercase tracking-[20px] text-gray-500 mt-28">Projects</h3>
-        <div className='w-full h-full relative flex items-center ml-44 -mt-20'>
+        <div className='big-container w-full h-full relative flex items-center justify-center -mt-20'>
           {currentIndex!=0?
             (
               <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100' onClick={()=>slideLeft(currentIndex-1)} size={40} />
@@ -250,8 +250,8 @@ export default function Projects(props:any) {
               <div/>
             )
           }
-          <div className= {`top-0 left-56 css-blurry-gradient gradient-${currentIndex}`}></div>
-          <div className={`top-0 -right-40 css-blurry-gradient gradient-${currentIndex}`}></div>
+          <div className= {`left-96 css-blurry-gradient gradient-${currentIndex}`}></div>
+          <div className={`-right-96 css-blurry-gradient gradient-${currentIndex}`}></div>
         </div>
       </div>
     </>

@@ -11,7 +11,7 @@ export default function Intro() {
   const [fadeIn, setFadeIn] = useState(false);
   const [slideIn, setSlideIn] = useState(false);
 
-///
+
   useEffect(() => {
     const container:any = document.getElementById('starry-background');
     const stars:HTMLDivElement[] = [];
@@ -109,13 +109,9 @@ export default function Intro() {
           ref={introRef}
           id= "intro-container"
           className={`intro-container ${fadeIn ? 'fade-in' : ''}`}
-          
           >
             <div id="starry-background"></div>
 
-
-          
-          
           <h1 className="intro-title">About</h1>
           
           <div className='intro-description'>
@@ -124,21 +120,22 @@ export default function Intro() {
                 className={`intro-image ${slideIn ? 'slide-in' : ''}`}
               >
                 <Image src="/imgs/photo-2.png" alt="My Image" width={300} height={300} />
-                
               </div>
 
               <div className='intro' >
                 
-                <h1 style={{ marginBottom: '20px' }}>Hi, here is a <span className="highlight underline">bit</span> about myself</h1>
+                <h1 style={{ marginBottom: '20px' }}>Hi, here is a <span className="highlight underline">bit</span> about 
+                myself</h1>
                 <div style={{ marginBottom: '20px' }} className='intro-aboutme'>
-                  <p>I have gained hands-on experience in various programming languages such as Python, C++/C, C#,</p>
-                  <p>Java,and JavaScript through personal projects and software development courses. As a <span className='highlight'>Software</span></p>
-                  <p><span className='highlight'>Developer</span>, I utilize industry-standard tools and possess practical knowledge of the field. My expertise </p>
-                  <p>as a <span className='highlight'>full-stack developer</span> includes React and Express.js for developing web applications, as well as </p>
-                  <p>Django and ASP.NET. I am also passionate about exploring <span className='highlight'>machine learning</span> applications in diverse </p>
-                  <p>domains and have worked on projects involving data analysis, predictive modelling, and implementing </p>
-                  <p>machine learning algorithms. With my diverse skill set, I can work on multiple platforms and technologies</p>
-                  <p>to deliver comprehensive solutions.</p>
+                  <p>I have gained hands-on experience in various programming languages such as Python, C++/C,
+                  C#, Java,and JavaScript through personal projects and software development courses.
+                  As a <span className='highlight'>Software Developer</span>, I utilize industry-standard tools and possess practical
+                  knowledge of the field. My expertise as a <span className='highlight'>full-stack developer</span> includes React and
+                  Express.js for developing web applications, as well as Django and ASP.NET. I am also
+                  passionate about exploring <span className='highlight'>machine learning</span> applications in diverse domains and have
+                  worked on projects involving data analysis, predictive modelling, and implementing 
+                  machine learning algorithms. With my diverse skill set, I can work on multiple platfo
+                  and technologies to deliver comprehensive solutions.</p>
                 </div>
 
                 <Link href="https://github.com/sus194?tab=repositories" title="GitHub" className='text-6xl mt-3 flex flex-row'>
