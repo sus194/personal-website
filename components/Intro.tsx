@@ -102,10 +102,7 @@ export default function Intro() {
         </ReactCardFlip>
         </div>
         
-       
-
-          
-          <div
+        <div
           ref={introRef}
           id= "intro-container"
           className={`intro-container ${fadeIn ? 'fade-in' : ''}`}
@@ -115,11 +112,10 @@ export default function Intro() {
           <h1 className="intro-title">About</h1>
           
           <div className='intro-description'>
-
               <div
                 className={`intro-image ${slideIn ? 'slide-in' : ''}`}
               >
-                <Image src="/imgs/photo-2.png" alt="My Image" width={300} height={300} />
+                <Image className='rounded-xl' src="/imgs/profile-pic.jpeg" alt="My Image" width={300} height={300} />
               </div>
 
               <div className='intro' >
