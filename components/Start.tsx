@@ -59,7 +59,7 @@ function Start(props: any) {
           <h1 className="sd">Sukhraj Purewal</h1>
           <h1 className="tp">
             <Typewriter
-              words={['Hi there, Welcome to my Website', 'I am a Software Developer', 'I like to play Chess, Hike and Run', 'Take a look at my Skills and Projects']}
+              words={['Hi, Welcome to my Website', 'I am a Software Developer', 'I like to play Chess, Hike and Run', 'Take a look at my Skills and Projects']}
               loop={Infinity}
               cursor
               cursorStyle="_"
