@@ -109,7 +109,7 @@ export default function Intro() {
           >
             <div id="starry-background"></div>
 
-          <h1 className="intro-title">About</h1>
+          <h1 className="intro-title">ABOUT</h1>
           
           <div className='intro-description'>
               <div
