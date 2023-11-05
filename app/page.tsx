@@ -25,18 +25,26 @@ export default function Page() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarOpenf, setIsSidebarOpenf] = useState(false);
   const [isvideoplain, setisvideoplain] = useState(true);
-  
+  const [isMobile, setIsMobile] = useState(false);
 
   const isplaying=(props: boolean)=>{
     if(!props){
       setisvideoplain(props)
     }
-   
   }
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setIsSidebarOpenf(true)
   };
+
+  useEffect(() => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollContainer = scrollContainerRef.current;
@@ -83,61 +91,66 @@ export default function Page() {
 
   return (
     <div>
-      <div className={`nav ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
-        <div className="right-nav">
-          <span  className={`menu ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'visible' : ''}`} onClick={toggleSidebar}>
-          {isSidebarOpen ? <IoClose /> : <FiMenu />}
-          
-          </span>
-        </div>
-      </div>
-      
-      <div className="underlay" ref={scrollContainerRef}>
-        {isvideoplain?(
-        <section><VideoPlayer handleCallback={isplaying}/></section>
-        ):(
-          <>
-        <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref}/></section>
-        
-        <section id="section2"  ref={page2Ref} ><Intro /></section>
-        <section id="section3" ref={page3Ref} ><Skills about = {page2Ref} project = {page4Ref} baropen = {isSidebarOpen}/></section>
-        <section id="section4"  ref={page4Ref} ><Projects activesection = {activeSection}/></section>
-        {/* <section id="section5" ref={page5Ref}><GetInTouch/></section>*/}
-        </>
-      )}
-      </div>
+      {isMobile ?(<p>Please access the website on desktop</p>) : (
 
-      {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
-      <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
-        <span className="navigation-title">Navigation</span>
-        <ul className="bar">
-          
-          <li>
-          <Link onClick={HomeClick}  href={""}>Home</Link>
+        <div>
+        <div className={`nav ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
+          <div className="right-nav">
+            <span  className={`menu ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'visible' : ''}`} onClick={toggleSidebar}>
+            {isSidebarOpen ? <IoClose /> : <FiMenu />}
             
-            </li>
-          <li>
-            <Link onClick={AboutClick}  href={""}>About</Link>
-            
-            </li>
-          <li>
-          <Link onClick={SkillsClick}  href={""}>Skills</Link>
-            
-            </li>
-          <li>
-          <Link onClick={ProjectClick}  href={""}>Projects</Link>
-            </li>
-            {/* <li>
-          <Link onClick={GetInTouchClick}  href={""}>Get in Touch</Link>
-            </li> */}
-          
-        </ul>
-        <div className="bottom-links">
-          <Link className="bottom-link" href="https://github.com/sus194">GitHub</Link>
-          <Link className="bottom-link" href="https://linkedin.com">LinkedIn</Link>
+            </span>
+          </div>
         </div>
-      </div>
-    )}
+
+        <div className="underlay" ref={scrollContainerRef}>
+          {isvideoplain?(
+          <section><VideoPlayer handleCallback={isplaying}/></section>
+          ):(
+            <>
+          <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref}/></section>
+          
+          <section id="section2"  ref={page2Ref} ><Intro /></section>
+          <section id="section3" ref={page3Ref} ><Skills about = {page2Ref} project = {page4Ref} baropen = {isSidebarOpen}/></section>
+          <section id="section4"  ref={page4Ref} ><Projects activesection = {activeSection}/></section>
+          {/* <section id="section5" ref={page5Ref}><GetInTouch/></section>*/}
+          </>
+        )}
+        </div>
+
+        {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
+        <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
+          <span className="navigation-title">Navigation</span>
+          <ul className="bar">
+            
+            <li>
+            <Link onClick={HomeClick}  href={""}>Home</Link>
+              
+              </li>
+            <li>
+              <Link onClick={AboutClick}  href={""}>About</Link>
+              
+              </li>
+            <li>
+            <Link onClick={SkillsClick}  href={""}>Skills</Link>
+              
+              </li>
+            <li>
+            <Link onClick={ProjectClick}  href={""}>Projects</Link>
+              </li>
+              {/* <li>
+            <Link onClick={GetInTouchClick}  href={""}>Get in Touch</Link>
+              </li> */}
+            
+          </ul>
+          <div className="bottom-links">
+            <Link className="bottom-link" href="https://github.com/sus194">GitHub</Link>
+            <Link className="bottom-link" href="https://linkedin.com">LinkedIn</Link>
+          </div>
+        </div>
+        )}
+        </div>
+      )}
       
     </div>
   )
