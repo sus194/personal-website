@@ -91,7 +91,7 @@ export default function Page() {
 
   return (
     <div>
-      {isMobile ?(<p className="text-center text-red-500">Please access the website on desktop</p>) : (
+      {isMobile ?(<p className="text-center text-red-500 mt-44">Please access the website on desktop</p>) : (
 
         <div>
         <div className={`nav ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
