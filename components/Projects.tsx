@@ -182,7 +182,7 @@ export default function Projects(props:any) {
               >
                 <h2 className='text-2xl ml-96 mt-3 mb-4 inline-block'>{project.title}</h2>
                 <Link href={project.githublink} title="GitHub">
-                  <IconContext.Provider value={{ className: 'inline-block ml-6 w-[2rem] h-[2rem]' }}>
+                  <IconContext.Provider value={{ className: 'inline-block ml-6 w-[2rem] rounded-full hover:scale-110 hover:bg-red-600 h-[2rem]' }}>
                     <FaGithub />
                   </IconContext.Provider>
                 </Link>
