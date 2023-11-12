@@ -4,7 +4,7 @@
   position: relative;
   opacity: 0;
   z-index: -1;
-  margin-top: -45%;
+  margin-top: -49%;
 }
 
 .intro-container.fade-in{
@@ -37,8 +37,8 @@
   font-family: 'Courier New', monospace;
   
   margin-right: 5%;
-  margin-top: 5%;
-  width: 60%;
+  margin-top: 4%;
+  width: 30%;
   height: 70vh;
   max-height: 80vh;
   border: 2px solid white;
@@ -47,6 +47,20 @@
   overflow-y: scroll;
   border-radius: 20px;
   transition: background-color 1s;
+}
+
+.intro.Extend{
+  width: 60%;
+  animation: extend 3s;
+}
+
+@keyframes extend {
+  from {
+    width: 30%;
+  }
+  to {
+    width: 60%;
+  }
 }
 
 
@@ -62,6 +76,7 @@
 .intro:hover {
   color: black;
   background-color: white;
+
   transition: background-color 1s;
 }
 
@@ -75,9 +90,9 @@
 
 .card-container {
   width: 30%;
-  height: 50%;
+  height: 40%;
   margin-left: 35%;
-  margin-top: 5%;
+  margin-top: 9%;
   display: flex;
   align-items: center;
   justify-content: center;

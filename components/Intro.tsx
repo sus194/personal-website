@@ -118,7 +118,7 @@ export default function Intro() {
                 <Image className='rounded-xl' src="/imgs/profile-pic.jpeg" alt="My Image" width={300} height={300} />
               </div>
 
-              <div className='intro' >
+              <div className={`intro ${fadeIn ? 'Extend':''}`} >
                 
                 <h1 style={{ marginBottom: '20px' }}>Hi, here is a <span className="highlight underline">bit</span> about 
                 myself</h1>
