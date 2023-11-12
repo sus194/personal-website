@@ -51,7 +51,7 @@ const VideoPlayer = (props:any) => {
    <video onClick={handleVideoClick} ref={videoRef} onTimeUpdate={isPaused ? handleideoTimeUpdate : handleVideoTimeUpdate} autoPlay muted loop className="video">      
     </video>
     {show?(
-    <div className={`contet-overlay ${show ? 'fade-in' : ''}`}>
+    <div onClick={handleVideoClick} className={`contet-overlay ${show ? 'fade-in' : ''}`}>
         <h1>Click To Continue</h1>
     </div>):(null)
     }   
