@@ -113,9 +113,11 @@ export default function Projects(props:any) {
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedImage('');
-    setSelectedName('');
+    if(isModalOpen){
+      setIsModalOpen(false);
+      setSelectedImage('');
+      setSelectedName('');
+    }
   };
   
   const slideUp = (name:string)=>{
@@ -161,7 +163,7 @@ export default function Projects(props:any) {
 */
   return (
     <>
-      <div className=' w-full h-full'>
+      <div onClick={closeModal} className=' w-full h-full'>
         <h3 className=" w-full object-cover select-none pl-[20px] text-center text-2xl uppercase tracking-[20px] text-gray-500 mt-28">Projects</h3>
         <div className='big-container w-full h-full relative flex items-center justify-center -mt-20'>
           {currentIndex!=0?
