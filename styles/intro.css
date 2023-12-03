@@ -35,7 +35,6 @@
 
 .intro{
   font-family: 'Courier New', monospace;
-  
   margin-right: 5%;
   margin-top: 4%;
   width: 30%;
@@ -43,11 +42,15 @@
   max-height: 80vh;
   border: 2px solid white;
   background-color: black;
-  overflow: hidden;
   overflow-y: scroll;
   border-radius: 20px;
   transition: background-color 1s;
 }
+
+.intro::-webkit-scrollbar {
+  display: none;
+}
+
 
 .intro.Extend{
   width: 60%;
