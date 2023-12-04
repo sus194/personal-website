@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '@styles/start.css';
 import Link from 'next/link';
@@ -8,19 +8,16 @@ import { Canvas} from '@react-three/fiber';
 import { Start_Background } from './Start_Background';
 
 function Start(props: any) {
-  const [fadeIn, setFadeIn] = useState(true);
-  
-  const videoContainerRef = useRef(null);
-
-  
   const AboutClick = () => props.ref1.current?.scrollIntoView({ behavior: 'smooth' });
   const SkillsClick = () => props.ref2.current?.scrollIntoView({ behavior: 'smooth' });
   const ProjectClick = () => props.ref3.current?.scrollIntoView({ behavior: 'smooth' });
   const GetInTouchClick = () => props.ref4.current?.scrollIntoView({ behavior: 'smooth' });
+
+  
   
   return (
     <>
-      <div className={`video-container ${fadeIn ? 'fade-in' : ''}`} ref={videoContainerRef} >
+      <div className={`video-container ${props.ref5 ? '' : 'fade-in'}`}>
         
           <Canvas camera={{ position: [0, 0, 5] }}>
             <Start_Background/>
@@ -28,7 +25,7 @@ function Start(props: any) {
             <pointLight position={[10, 10, 10]} />
           </Canvas>
 
-        <div className={`nav ${fadeIn ? 'fade-in' : ''}`}>
+        <div className={`nav ${props.ref5 ? '' : 'fade-in'}`}>
           <div className="left-nav">
             <Link href="https://github.com/sus194" title="GitHub">
               <IconContext.Provider value={{ className: 'left-icon' }}>
@@ -48,7 +45,7 @@ function Start(props: any) {
           </div>
         </div>
 
-        <div className={`content-overlay ${fadeIn ? 'fade-in' : ''}` } >
+        <div className={`content-overlay ${props.ref5 ? '' : 'fade-in'}` } >
           <div>
             <div
               className="symbol"

@@ -108,7 +108,7 @@ export default function Page() {
           <section><VideoPlayer handleCallback={isplaying}/></section>
           ):(
             <>
-          <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref}/></section>
+          <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref} ref5 = {isvideoplain}/></section>
           
           <section id="section2"  ref={page2Ref} ><Intro /></section>
           <section id="section3" ref={page3Ref} ><Skills about = {page2Ref} project = {page4Ref} baropen = {isSidebarOpen}/></section>

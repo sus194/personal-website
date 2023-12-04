@@ -165,7 +165,7 @@ export default function Projects(props:any) {
     <>
       <div onClick={closeModal} className=' w-full h-full'>
         <h3 className=" w-full object-cover select-none pl-[20px] text-center text-2xl uppercase tracking-[20px] text-gray-500 mt-28">Projects</h3>
-        <div className='big-container w-full h-full relative flex items-center justify-center -mt-20'>
+        <div className='big-container w-full h-full relative flex items-center justify-center -mt-20 ' >
           {currentIndex!=0?
             (
               <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100' onClick={()=>slideLeft(currentIndex-1)} size={40} />
@@ -176,7 +176,7 @@ export default function Projects(props:any) {
           }
           <div
             id='slider'
-            className={`w-[1000px] h-[500px] no-scrollbar overflow-hidden scroll whitespace-nowrap scroll-smooth snap-x shadow-2xl`}
+            className={`w-[1000px] h-[500px] no-scrollbar overflow-hidden scroll whitespace-nowrap scroll-smooth snap-x`}
           >
 
             {projectData.map((project, index) => (
@@ -207,7 +207,7 @@ export default function Projects(props:any) {
                   >
                     {Object.entries(project.slides).map(([name, img]) => (
                       <div key = {name} className= {` mr-20 rounded-full content-center inline-block overflow-hidden w-[60px] h-[60px] ${project.color}`}>
-                        <img className='hover:opacity-60  hover:shadow-2xl rounded-full w-[50px] h-[50px] ml-1 mt-1' src={img} width={100} height={100} alt='' onClick={() => openModal(img,name)}/>
+                        <img className='hover:opacity-60 rounded-full w-[50px] h-[50px] ml-1 mt-1' src={img} width={100} height={100} alt='' onClick={() => openModal(img,name)}/>
                         {/*<h1 className='mb-1 font-serif'>{name}</h1>*/}
                       </div>
                     ))}
