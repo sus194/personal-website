@@ -1,142 +1,146 @@
 .intro-container {
   height: 100vh;
   width: 100vw;
-  position: relative;
+  /* Positioned absolutely by JS classes, strictly purely strictly styles here */
   opacity: 0;
   z-index: -1;
-  margin-top: -49%;
 }
 
-.intro-container.fade-in{
+.intro-container.fade-in {
   opacity: 1;
-  transition: opacity 5s;
+  /* Very slow fade-in (2.5s) */
+  transition: opacity 2.5s ease-in-out;
   z-index: 0;
 }
 
 .intro-title {
   font-size: 50px;
-  margin-left: 45%;
   font-family: 'Courier New', monospace;
+  text-align: center;
 }
 
-.intro-description{
-  display: inline-flex;
+.intro-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .intro-image {
-  width: 25%; 
-  height: auto; 
-  margin-top: 10%;
-  margin-left: 10%;
-  transform: translateX(-200px);
-  opacity:0;
-  transition: opacity 5s, transform 3s;
+  width: 300px;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: opacity 1.5s ease-out, transform 1s ease-out;
 }
-
-.intro{
-  font-family: 'Courier New', monospace;
-  margin-right: 5%;
-  margin-top: 4%;
-  width: 30%;
-  height: 70vh;
-  max-height: 80vh;
-  border: 2px solid white;
-  background-color: black;
-  overflow-y: scroll;
-  border-radius: 20px;
-  transition: background-color 1s;
-}
-
-.intro::-webkit-scrollbar {
-  display: none;
-}
-
-
-.intro.Extend{
-  width: 60%;
-  animation: extend 3s;
-}
-
-@keyframes extend {
-  from {
-    width: 30%;
-  }
-  to {
-    width: 60%;
-  }
-}
-
-
-.intro h1{
-  font-size: 50px;
-}
-
-.highlight{
-  color: red;
-}
-
-
-.intro:hover {
-  color: black;
-  background-color: white;
-
-  transition: background-color 1s;
-}
-
-
-
 
 .intro-image.slide-in {
   transform: translateX(0);
   opacity: 1;
 }
 
+.intro {
+  font-family: 'Courier New', monospace;
+  width: 0%;
+  max-width: 800px;
+  height: 60vh;
+  max-height: 80vh;
+  border: 2px solid white;
+  background-color: black;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.intro.Extend {
+  width: 100%;
+  opacity: 1;
+  animation: extend 1s forwards;
+}
+
+@keyframes extend {
+  from {
+    width: 0%;
+    opacity: 0;
+  }
+
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.intro::-webkit-scrollbar {
+  display: none;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: red;
+}
+
+.intro:hover {
+  color: black;
+  background-color: white;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* Card Styles */
 .card-container {
-  width: 30%;
-  height: 40%;
-  margin-left: 35%;
-  margin-top: 9%;
+  /* Dimensions only - positioning handled in JS wrapper */
+  /* Increased size as requested */
+  width: 400px;
+  height: 560px;
+  max-width: 90vw;
+  max-height: 80vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 1;
 }
 
-
-.card-container.fade-out{
-  animation: fadeout 3s;
+.card-container.fade-out {
+  /* Targeted vanish (1.0s) for balanced transition */
+  animation: fadeout 1.0s forwards;
+  pointer-events: none;
 }
 
 @keyframes fadeout {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
 }
 
-
-
 .card-content {
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 
 .card-front,
 .card-back {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .card-content.hover-effect {
   transform: scale(1.05);
-  transition: transform 0.5s;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card-content.not-hover-effect {
   transform: scale(1);
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 }
 
 .card-content.hover-effect.flipped {
@@ -146,10 +150,10 @@
 
 #starry-background {
   position: absolute;
-  top: 5px;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 92%;
+  height: 100%;
   z-index: -1;
   pointer-events: none;
 }
@@ -159,4 +163,5 @@
   width: 2px;
   height: 2px;
   background-color: #fff;
+  border-radius: 50%;
 }
