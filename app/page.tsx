@@ -145,6 +145,7 @@ export default function Page() {
           </ul>
           <div className="bottom-links">
             <Link className="bottom-link" href="https://github.com/sus194">GitHub</Link>
+            <Link className="bottom-link" href="https://gitlab.com/sus194">GitLab</Link>
             <Link className="bottom-link" href="https://linkedin.com">LinkedIn</Link>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import '@styles/start.css';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaGitlab } from 'react-icons/fa';
 import { Canvas} from '@react-three/fiber';
 import { Start_Background } from './Start_Background';
 
@@ -30,6 +30,11 @@ function Start(props: any) {
             <Link href="https://github.com/sus194" title="GitHub">
               <IconContext.Provider value={{ className: 'left-icon' }}>
                 <FaGithub />
+              </IconContext.Provider>
+            </Link>
+            <Link href="https://gitlab.com/sus194" title="Gitlab">
+              <IconContext.Provider value={{ className: 'left-icon' }}>
+                <FaGitlab />
               </IconContext.Provider>
             </Link>
             <Link href="https://www.linkedin.com/in/sukhraj-purewal-78b6b1222/" title="Linkeden">
