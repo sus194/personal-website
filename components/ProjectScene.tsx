@@ -3,17 +3,13 @@ import { useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 
 interface ProjectSceneProps {
-    imagePath: string;
+    imagePath?: string;
     type?: 'screen' | 'car' | 'map' | 'server' | 'maze' | 'calculator' | 'bot' | 'backpack' | 'hoop';
 }
 
 // 1. New component for handling texture loading (Hooks must be unconditional)
 const ScreenModel = ({ imagePath }: { imagePath: string }) => {
-    // Only try to load if there is a path, otherwise use a safe fallback (or error boundary will catch it)
-    // However, for 'screen' type projects, we generally expect an image.
-    // We used to have a fallback 'placeholder.png' which doesn't exist.
-    // If imagePath is empty, useLoader might fail or return null. 
-    // Let's assume imagePath is valid for screen projects.
+    // Only try to load if there is a path
     const texture = useLoader(TextureLoader, imagePath);
 
     return (
