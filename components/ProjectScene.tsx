@@ -582,7 +582,7 @@ const ProjectDisplay = ({ imagePath, type = 'screen' }: ProjectSceneProps) => {
     // Default or Screen type returns the new component
     return (
         <group ref={meshRef}>
-            <ScreenModel imagePath={imagePath} />
+            <ScreenModel imagePath={imagePath || ''} />
         </group>
     );
 };
