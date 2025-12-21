@@ -2,13 +2,14 @@
 import Intro from "../components/Intro"
 import GetInTouch from "../components/GetInTouch"
 import Projects from "../components/Projects"
+import Experience from "../components/Experience"
 import Skills from "../components/Skills"
 import Start from "../components/Start"
 import "@styles/globals.css"
 import { useEffect, useRef, useState } from "react"
 import Link from 'next/link';
-import {FiMenu } from "react-icons/fi";
-import {IoClose } from "react-icons/io5";
+import { FiMenu } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 
 import VideoPlayer from "../components/VideoPlayer"
 import React from "react"
@@ -18,6 +19,7 @@ export default function Page() {
   const page1Ref = useRef<HTMLDivElement>(null);
   const page2Ref = useRef<HTMLDivElement>(null);
   const page3Ref = useRef<HTMLDivElement>(null);
+  const expRef = useRef<HTMLDivElement>(null); // New Ref for Experience
   const page4Ref = useRef<HTMLDivElement>(null);
   const page5Ref = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -27,8 +29,8 @@ export default function Page() {
   const [isvideoplain, setisvideoplain] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
-  const isplaying=(props: boolean)=>{
-    if(!props){
+  const isplaying = (props: boolean) => {
+    if (!props) {
       setisvideoplain(props)
     }
   }
@@ -51,18 +53,21 @@ export default function Page() {
       const scrollOffset = scrollContainer?.scrollTop;
       const section2Offset = page2Ref.current?.offsetTop;
       const section3Offset = page3Ref.current?.offsetTop;
+      const expOffset = expRef.current?.offsetTop;
       const section4Offset = page4Ref.current?.offsetTop;
       const section5Offset = page5Ref.current?.offsetTop;
 
-      if (section5Offset&&scrollOffset&&scrollOffset >= section5Offset && activeSection !== "section5") {
+      if (section5Offset && scrollOffset && scrollOffset >= section5Offset && activeSection !== "section5") {
         setActiveSection("section5");
-      } else if (section4Offset&&scrollOffset&&scrollOffset >= section4Offset && activeSection !== "section4") {
+      } else if (section4Offset && scrollOffset && scrollOffset >= section4Offset && activeSection !== "section4") {
         setActiveSection("section4");
-      } else if (section3Offset&&scrollOffset&&scrollOffset >= section3Offset && activeSection !== "section3") {
+      } else if (expOffset && scrollOffset && scrollOffset >= expOffset && activeSection !== "experience") {
+        setActiveSection("experience");
+      } else if (section3Offset && scrollOffset && scrollOffset >= section3Offset && activeSection !== "section3") {
         setActiveSection("section3");
-      } else if (section2Offset&&scrollOffset&&scrollOffset >= section2Offset && activeSection !== "section2") {
+      } else if (section2Offset && scrollOffset && scrollOffset >= section2Offset && activeSection !== "section2") {
         setActiveSection("section2");
-      } else if (section2Offset&&scrollOffset&&scrollOffset < section2Offset && activeSection !== "section1") {
+      } else if (section2Offset && scrollOffset && scrollOffset < section2Offset && activeSection !== "section1") {
         setActiveSection("section1");
         setIsSidebarOpenf(false)
         setIsSidebarOpen(false)
@@ -82,77 +87,84 @@ export default function Page() {
 
   const AboutClick = () => page2Ref.current?.scrollIntoView({ behavior: 'smooth' });
   const SkillsClick = () => page3Ref.current?.scrollIntoView({ behavior: 'smooth' });
+  const ExperienceClick = () => expRef.current?.scrollIntoView({ behavior: 'smooth' }); // Add handler
   const ProjectClick = () => page4Ref.current?.scrollIntoView({ behavior: 'smooth' });
-  const GetInTouchClick = () => page5Ref.current?.scrollIntoView({ behavior: 'smooth' });
 
   const HomeClick = () => page1Ref.current?.scrollIntoView({ behavior: 'smooth' });
 
-  
+
 
   return (
     <div>
-      {isMobile ?(<p className="text-center text-red-500 mt-44">Please access the website on desktop</p>) : (
+      {isMobile ? (<p className="text-center text-red-500 mt-44">Please access the website on desktop</p>) : (
 
         <div>
-        <div className={`nav ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
-          <div className="right-nav">
-            <span  className={`menu ${["section2", "section3", "section4", "section5"].includes(activeSection) ? 'visible' : ''}`} onClick={toggleSidebar}>
-            {isSidebarOpen ? <IoClose /> : <FiMenu />}
-            
-            </span>
+          <div className={`nav ${["section2", "section3", "experience", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
+            <div className="right-nav">
+              <span className={`menu ${["section2", "section3", "experience", "section4", "section5"].includes(activeSection) ? 'visible' : ''}`} onClick={toggleSidebar}>
+                {isSidebarOpen ? <IoClose /> : <FiMenu />}
+
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="underlay" ref={scrollContainerRef}>
-          {isvideoplain?(
-          <section><VideoPlayer handleCallback={isplaying}/></section>
-          ):(
-            <>
-          <section id="section1"  ref={page1Ref}  ><Start ref1 = {page2Ref} ref2 = {page3Ref} ref3 = {page4Ref} ref4 = {page5Ref} ref5 = {isvideoplain}/></section>
-          
-          <section id="section2"  ref={page2Ref} ><Intro /></section>
-          <section id="section3" ref={page3Ref} ><Skills about = {page2Ref} project = {page4Ref} baropen = {isSidebarOpen}/></section>
-          <section id="section4"  ref={page4Ref} ><Projects activesection = {activeSection}/></section>
-          {/* <section id="section5" ref={page5Ref}><GetInTouch/></section>*/}
-          </>
-        )}
-        </div>
+          <div className="underlay" ref={scrollContainerRef}>
+            {isvideoplain ? (
+              <section><VideoPlayer handleCallback={isplaying} /></section>
+            ) : (
+              <>
+                <section id="section1" ref={page1Ref}  ><Start ref1={page2Ref} ref2={page3Ref} ref3={page4Ref} ref4={page5Ref} ref5={isvideoplain} experience={expRef} /></section>
 
-        {isSidebarOpenf&&["section2", "section3", "section4", "section5"].includes(activeSection)&&(
-        <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
-          <span className="navigation-title">Navigation</span>
-          <ul className="bar">
-            
-            <li>
-            <Link onClick={HomeClick}  href={""}>Home</Link>
-              
-              </li>
-            <li>
-              <Link onClick={AboutClick}  href={""}>About</Link>
-              
-              </li>
-            <li>
-            <Link onClick={SkillsClick}  href={""}>Skills</Link>
-              
-              </li>
-            <li>
-            <Link onClick={ProjectClick}  href={""}>Projects</Link>
-              </li>
-              {/* <li>
+                <section id="section2" ref={page2Ref} ><Intro /></section>
+                <section id="section3" ref={page3Ref} ><Skills about={page2Ref} project={page4Ref} experience={expRef} baropen={isSidebarOpen} /></section>
+
+                {/* New Experience Section */}
+                <section id="section-experience" ref={expRef}><Experience skills={page3Ref} project={page4Ref} baropen={isSidebarOpen} /></section>
+
+                <section id="section4" ref={page4Ref} ><Projects activesection={activeSection} /></section>
+                {/* <section id="section5" ref={page5Ref}><GetInTouch/></section>*/}
+              </>
+            )}
+          </div>
+
+          {isSidebarOpenf && ["section2", "section3", "experience", "section4", "section5"].includes(activeSection) && (
+            <div className={`sidebar ${!isSidebarOpen ? "slide-out" : ""}`}>
+              <span className="navigation-title">Navigation</span>
+              <ul className="bar">
+
+                <li>
+                  <Link onClick={HomeClick} href={""}>Home</Link>
+
+                </li>
+                <li>
+                  <Link onClick={AboutClick} href={""}>About</Link>
+
+                </li>
+                <li>
+                  <Link onClick={SkillsClick} href={""}>Skills</Link>
+
+                </li>
+                <li>
+                  <Link onClick={ExperienceClick} href={""}>Experience</Link>
+                </li>
+                <li>
+                  <Link onClick={ProjectClick} href={""}>Projects</Link>
+                </li>
+                {/* <li>
             <Link onClick={GetInTouchClick}  href={""}>Get in Touch</Link>
               </li> */}
-            
-          </ul>
-          <div className="bottom-links">
-            <Link className="bottom-link" href="https://github.com/sus194">GitHub</Link>
-            <Link className="bottom-link" href="https://gitlab.com/sus194">GitLab</Link>
-            <Link className="bottom-link" href="https://linkedin.com">LinkedIn</Link>
-          </div>
-        </div>
-        )}
+
+              </ul>
+              <div className="bottom-links">
+                <Link className="bottom-link" href="https://github.com/sus194">GitHub</Link>
+                <Link className="bottom-link" href="https://gitlab.com/sus194">GitLab</Link>
+                <Link className="bottom-link" href="https://linkedin.com">LinkedIn</Link>
+              </div>
+            </div>
+          )}
         </div>
       )}
-      
+
     </div>
   )
 }

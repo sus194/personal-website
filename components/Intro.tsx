@@ -4,7 +4,7 @@ import '@styles/intro.css';
 import ReactCardFlip from 'react-card-flip';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
-import { FaCode, FaFile } from 'react-icons/fa';
+import { FaCode, FaFile, FaGitlab } from 'react-icons/fa';
 
 export default function Intro() {
   const introRef = useRef<HTMLDivElement>(null);
@@ -139,15 +139,9 @@ export default function Intro() {
               <h1 style={{ marginBottom: '20px' }}>Hi, here is a <span className="highlight underline">bit</span> about
                 myself</h1>
               <div style={{ marginBottom: '20px' }} className='intro-aboutme'>
-                <p>I have gained hands-on experience in various programming languages such as Python, C++/C,
-                  C#, Java,and JavaScript through personal projects and software development courses.
-                  As a <span className='highlight'>Software Developer</span>, I utilize industry-standard tools and possess practical
-                  knowledge of the field. My expertise as a <span className='highlight'>full-stack developer</span> includes React and
-                  Express.js for developing web applications, as well as Django and ASP.NET. I am also
-                  passionate about exploring <span className='highlight'>machine learning</span> applications in diverse domains and have
-                  worked on projects involving data analysis, predictive modelling, and implementing
-                  machine learning algorithms. With my diverse skill set, I can work on multiple platforms
-                  and technologies to deliver comprehensive solutions.</p>
+                <p>I’m a Computer Science student at Simon Fraser University with hands-on experience building systems-level software across infrastructure, robotics, and data-driven applications. I’ve completed internships at Astera Labs and MineSense, where I worked on C++ and Python systems including networking SDKs, CI/CD automation, containerized benchmarking, and large-scale telemetry and debugging tooling.</p>
+                <br />
+                <p>Outside of work, I lead the software team for SFU’s Robotics Soccer Club, where I design and implement multi-agent path planning algorithms such as D* Lite and CBS, along with real-time simulation and control systems in C++. I enjoy building reliable, high-performance systems that connect algorithms with real-world performance and turn complex problems into clean, maintainable solutions.</p>
               </div>
 
               <div className="flex flex-row gap-8">
@@ -156,7 +150,12 @@ export default function Intro() {
                   <span className='text-2xl ml-5'>GitHub repos</span>
                 </Link>
 
-                <a href="Sukhraj_Resume.pdf" download="Resume.pdf" title="Resume" className='text-6xl mt-3 flex flex-row items-center hover:text-gray-300 transition-colors'>
+                <Link href="https://gitlab.com/sus194" title="GitLab" className='text-6xl mt-3 flex flex-row items-center hover:text-gray-300 transition-colors'>
+                  <FaGitlab />
+                  <span className='text-2xl ml-5'>GitLab</span>
+                </Link>
+
+                <a href="Sukhraj_Resume.pdf" download="Sukhraj_Purewal_Resume.pdf" title="Resume" className='text-6xl mt-3 flex flex-row items-center hover:text-gray-300 transition-colors'>
                   <FaFile />
                   <span className='text-2xl ml-5'>Resume</span>
                 </a>

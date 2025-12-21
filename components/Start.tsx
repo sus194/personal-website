@@ -4,26 +4,27 @@ import '@styles/start.css';
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
 import { FaEnvelope, FaGithub, FaLinkedin, FaGitlab } from 'react-icons/fa';
-import { Canvas} from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { Start_Background } from './Start_Background';
 
 function Start(props: any) {
   const AboutClick = () => props.ref1.current?.scrollIntoView({ behavior: 'smooth' });
   const SkillsClick = () => props.ref2.current?.scrollIntoView({ behavior: 'smooth' });
+  const ExperienceClick = () => props.experience.current?.scrollIntoView({ behavior: 'smooth' });
   const ProjectClick = () => props.ref3.current?.scrollIntoView({ behavior: 'smooth' });
   const GetInTouchClick = () => props.ref4.current?.scrollIntoView({ behavior: 'smooth' });
 
-  
-  
+
+
   return (
     <>
       <div className={`video-container ${props.ref5 ? '' : 'fade-in'}`}>
-        
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <Start_Background/>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-          </Canvas>
+
+        <Canvas camera={{ position: [0, 0, 5] }}>
+          <Start_Background />
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+        </Canvas>
 
         <div className={`nav ${props.ref5 ? '' : 'fade-in'}`}>
           <div className="left-nav">
@@ -50,12 +51,12 @@ function Start(props: any) {
           </div>
         </div>
 
-        <div className={`content-overlay ${props.ref5 ? '' : 'fade-in'}` } >
+        <div className={`content-overlay ${props.ref5 ? '' : 'fade-in'}`} >
           <div>
             <div
               className="symbol"
             ></div>
-            
+
           </div>
 
           <h1 className="sd">Sukhraj Purewal</h1>
@@ -74,10 +75,11 @@ function Start(props: any) {
           <div className="navbar">
             <button onClick={AboutClick}>About</button>
             <button onClick={SkillsClick}>Skills</button>
+            <button onClick={ExperienceClick}>Experience</button>
             <button onClick={ProjectClick}>Project</button>
           </div>
         </div>
-        
+
       </div>
     </>
   );
