@@ -59,7 +59,7 @@ const projectData: Project[] = [
   },
   {
     title: 'Knight Run',
-    skills: ['Unity', 'C#', 'Game Dev', 'Physics'],
+    skills: ['Java', 'Game Dev', 'OOP'],
     description: [
       'A 2D endless runner game with custom physics interactions and pixel art aesthetics.',
       'Features procedural level generation, combat mechanics, and global high-score tracking.',
