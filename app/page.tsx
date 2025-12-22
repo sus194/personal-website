@@ -98,7 +98,7 @@ export default function Page() {
     <div>
       {isMobile ? (<p className="text-center text-red-500 mt-44">Please access the website on desktop</p>) : (
 
-        <div>
+        <div className="right-sidebar">
           <div className={`nav ${["section2", "section3", "experience", "section4", "section5"].includes(activeSection) ? 'menu-open' : ''}`}>
             <div className="right-nav">
               <span className={`menu ${["section2", "section3", "experience", "section4", "section5"].includes(activeSection) ? 'visible' : ''}`} onClick={toggleSidebar}>
